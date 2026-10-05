@@ -1100,27 +1100,26 @@ footer .logo span {
     font-size: 12px;
   }
 /* =========================================
-   DARK MAP ONLY
+   DARK MAP
 ========================================= */
 
 .mapPanel {
-  background: #111923;
+  background: #151a20;
 }
 
-.realMap {
-  background: #111923;
+/* Darken Leaflet map tiles */
+.leaflet-container {
+  background: #151a20 !important;
 }
 
-/* Затемняем только изображение карты */
-.realMap .leaflet-tile-pane {
-  filter:
-    brightness(0.42)
-    contrast(1.1)
-    saturate(0.7);
+.leaflet-tile {
+  filter: brightness(0.58) contrast(1.08) saturate(0.75);
 }
-/* Оставляем маркеры и элементы карты нормальными */
-.realMap .leaflet-marker-pane,
-.realMap .leaflet-popup-pane,
-.realMap .leaflet-control-container {
+
+/* Keep Keci markers and controls unchanged */
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-popup,
+.leaflet-control {
   filter: none !important;
 }
