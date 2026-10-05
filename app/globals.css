@@ -33,10 +33,14 @@ button {
 .topbar {
   height: 76px;
   background: #171714 !important;
+
   display: flex;
   align-items: center;
+
   padding: 0 42px;
+
   border-bottom: 1px solid #30302b;
+
   position: relative;
   z-index: 20;
 }
@@ -45,11 +49,11 @@ button {
   font-size: 31px;
   font-weight: 800;
   letter-spacing: -2px;
-  color: #ffffff !important;
+  color: #c4e45d !important;
 }
 
 .logo span {
-  color: #c4e45d !important;
+  color: #ffffff !important;
 }
 
 .nav {
@@ -62,10 +66,15 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
+
   padding: 10px 14px;
+
   border-radius: 20px;
+
   color: #d7d7d0;
+
   font-size: 14px;
+
   transition: all 0.2s ease;
 }
 
@@ -88,8 +97,10 @@ button {
 
 .topActions {
   margin-left: auto;
+
   display: flex;
   align-items: center;
+
   gap: 20px;
 }
 
@@ -97,7 +108,9 @@ button {
   display: flex;
   align-items: center;
   gap: 3px;
+
   font-size: 13px;
+
   color: #d7d7d0;
 }
 
@@ -108,9 +121,12 @@ button {
 
 .login {
   padding: 11px 18px;
+
   border: 1px solid #c4e45d;
   border-radius: 22px;
+
   color: #c4e45d;
+
   transition: all 0.2s ease;
 }
 
@@ -120,19 +136,54 @@ button {
 }
 
 /* =========================================
-   MOBILE MENU BUTTON
+   DESKTOP LANGUAGE MENU
 ========================================= */
 
-.mobileMenu {
-  display: none;
-  color: #c4e45d !important;
+.desktopLanguage {
+  position: relative;
 }
 
-.mobileMenu svg {
-  width: 24px;
-  height: 24px;
-  color: #c4e45d !important;
-  stroke: #c4e45d !important;
+.desktopLanguageMenu {
+  position: absolute;
+
+  top: 38px;
+  right: 0;
+
+  width: 170px;
+
+  padding: 8px;
+
+  background: #20201c;
+
+  border: 1px solid #3a3a34;
+  border-radius: 12px;
+
+  z-index: 2000;
+}
+
+.desktopLanguageMenu button {
+  width: 100%;
+
+  padding: 9px;
+
+  border-radius: 8px;
+
+  color: #d7d7d0;
+
+  text-align: left;
+}
+
+.desktopLanguageMenu button:hover {
+  background: #2a2a24;
+}
+
+/* =========================================
+   MOBILE ELEMENTS
+========================================= */
+
+.mobileMenu,
+.mobileLanguageWrap {
+  display: none;
 }
 
 /* =========================================
@@ -141,20 +192,26 @@ button {
 
 .hero {
   height: 570px;
+
   position: relative;
+
   color: white;
+
   overflow: hidden;
 }
 
 .heroImage {
   object-fit: cover;
   object-position: center 54%;
+
   z-index: 0;
 }
 
 .heroShade {
   position: absolute;
+
   inset: 0;
+
   z-index: 1;
 
   background:
@@ -173,24 +230,35 @@ button {
 
 .heroContent {
   position: relative;
+
   z-index: 2;
+
   max-width: 1250px;
+
   margin: auto;
+
   padding: 110px 42px;
 }
 
 .eyebrow {
   font-size: 11px;
+
   letter-spacing: 2px;
+
   font-weight: 700;
+
   color: #d8dfc5;
 }
 
 .hero h1 {
   font-size: 68px;
+
   line-height: 0.98;
+
   letter-spacing: -4px;
+
   margin: 18px 0 16px;
+
   font-weight: 750;
 }
 
@@ -201,7 +269,9 @@ button {
 
 .hero p {
   font-size: 19px;
+
   color: #e9e8e2;
+
   margin-bottom: 30px;
 }
 
@@ -212,11 +282,16 @@ button {
 .searchBox {
   width: min(650px, 100%);
   height: 62px;
+
   background: #ffffff;
+
   border-radius: 13px;
+
   display: flex;
   align-items: center;
+
   padding: 0 8px 0 20px;
+
   color: #555;
 }
 
@@ -228,10 +303,15 @@ button {
 .searchBox input {
   border: 0;
   outline: 0;
+
   flex: 1;
+
   padding: 0 14px;
+
   font-size: 15px;
+
   color: #222;
+
   background: transparent;
 }
 
@@ -242,12 +322,15 @@ button {
 .searchBox button {
   width: 46px;
   height: 46px;
+
   border-radius: 10px;
+
   background: #c4e45d;
+
   color: #17200b;
+
   display: grid;
   place-items: center;
-  transition: all 0.2s ease;
 }
 
 .searchBox button:hover {
@@ -261,29 +344,33 @@ button {
 .chips {
   display: flex;
   flex-wrap: wrap;
+
   gap: 8px;
+
   margin-top: 18px;
+
   max-width: 950px;
 }
 
 .chip {
   display: flex;
   align-items: center;
+
   gap: 7px;
 
   border: 1px solid rgba(255, 255, 255, 0.25);
 
   color: #ffffff;
+
   background: rgba(20, 20, 18, 0.3);
 
   backdrop-filter: blur(8px);
 
   padding: 9px 13px;
+
   border-radius: 20px;
 
   font-size: 12px;
-
-  transition: all 0.2s ease;
 }
 
 .chip svg {
@@ -298,13 +385,16 @@ button {
 }
 
 /* =========================================
-   EXPLORE SECTION
+   EXPLORE
 ========================================= */
 
 .explore {
   display: grid;
+
   grid-template-columns: 43% 57%;
+
   min-height: 620px;
+
   background: #f7f5ef;
 }
 
@@ -314,8 +404,10 @@ button {
 
 .sectionHead {
   display: flex;
+
   justify-content: space-between;
   align-items: end;
+
   gap: 20px;
 }
 
@@ -325,24 +417,35 @@ button {
 
 .sectionHead h2 {
   font-size: 31px;
+
   letter-spacing: -1px;
+
   margin: 7px 0 0;
 }
 
 .sectionHead h2 small {
   font-size: 12px;
+
   color: #8a887d;
+
   font-weight: 500;
+
   margin-left: 6px;
 }
 
 .filter {
   display: flex;
+
   gap: 7px;
+
   align-items: center;
+
   border: 1px solid #d4d1c7;
+
   border-radius: 20px;
+
   padding: 9px 13px;
+
   font-size: 12px;
 }
 
@@ -353,17 +456,25 @@ button {
 
 .filters {
   display: flex;
+
   gap: 8px;
+
   margin: 25px 0 15px;
 }
 
 .filters button {
   display: flex;
+
   align-items: center;
+
   gap: 7px;
+
   padding: 8px 12px;
+
   border: 1px solid #dedbd2;
+
   border-radius: 18px;
+
   font-size: 12px;
 }
 
@@ -373,7 +484,7 @@ button {
 }
 
 /* =========================================
-   RESTAURANT LIST
+   RESTAURANTS
 ========================================= */
 
 .restaurantList {
@@ -383,28 +494,41 @@ button {
 
 .restaurant {
   display: flex;
+
   text-align: left;
+
   width: 100%;
+
   padding: 10px;
+
   border: 1px solid transparent;
+
   border-radius: 14px;
+
   gap: 13px;
+
   align-items: center;
 }
 
 .restaurant:hover,
 .restaurant.selected {
   background: #ffffff;
+
   border-color: #dedbd2;
+
   box-shadow: 0 5px 18px rgba(20, 20, 10, 0.04);
 }
 
 .thumb {
   position: relative;
+
   width: 102px;
   height: 84px;
+
   flex: 0 0 auto;
+
   overflow: hidden;
+
   border-radius: 10px;
 }
 
@@ -414,12 +538,17 @@ button {
 
 .thumb span {
   position: absolute;
+
   right: 7px;
   top: 7px;
+
   width: 25px;
   height: 25px;
+
   border-radius: 50%;
+
   background: rgba(255, 255, 255, 0.88);
+
   display: grid;
   place-items: center;
 }
@@ -439,16 +568,22 @@ button {
 
 .rating {
   display: flex;
+
   align-items: center;
+
   gap: 4px;
+
   font-size: 12px;
+
   margin-top: 7px;
 }
 
 .rating svg {
   width: 13px;
   height: 13px;
+
   fill: #a7c95c;
+
   color: #a7c95c;
 }
 
@@ -460,13 +595,17 @@ button {
 
 .placeInfo p {
   font-size: 12px;
+
   margin: 5px 0;
 }
 
 .placeInfo small {
   font-size: 11px;
+
   display: flex;
+
   align-items: center;
+
   gap: 3px;
 }
 
@@ -481,18 +620,23 @@ button {
 
 .mapPanel {
   min-height: 620px;
+
   border-left: 1px solid #ddd9ce;
+
   position: relative;
 }
 
 .realMap {
   height: 100%;
+
   min-height: 620px;
+
   width: 100%;
 }
 
 .locate {
   position: absolute;
+
   right: 24px;
   bottom: 24px;
 
@@ -515,6 +659,10 @@ button {
   width: 18px;
   height: 18px;
 }
+
+/* =========================================
+   MARKER
+========================================= */
 
 .keci-marker {
   background: transparent !important;
@@ -554,6 +702,7 @@ footer {
   color: #bdbdb5;
 
   display: flex;
+
   align-items: center;
 
   padding: 0 42px;
@@ -564,12 +713,12 @@ footer {
 }
 
 footer .logo {
-  color: #ffffff !important;
+  color: #c4e45d !important;
   margin-right: auto;
 }
 
 footer .logo span {
-  color: #c4e45d !important;
+  color: #ffffff !important;
 }
 
 /* =========================================
@@ -580,59 +729,92 @@ footer .logo span {
 
   .topbar {
     height: 76px;
-    padding: 0 20px;
+
+    padding: 0 18px;
+
     background: #171714 !important;
   }
 
   .logo {
-    color: #ffffff !important;
     font-size: 31px;
-  }
 
-  .logo span {
     color: #c4e45d !important;
   }
 
-  .nav {
-    display: none;
-
-    position: absolute;
-
-    top: 76px;
-    left: 0;
-    right: 0;
-
-    background: #171714 !important;
-
-    padding: 14px 20px;
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-
-    flex-direction: column;
-
-    border-top: 1px solid #30302b;
+  .logo span {
+    color: #ffffff !important;
   }
 
-  .nav.open {
+  /* Desktop navigation hidden */
+  .desktopNav {
+    display: none !important;
+  }
+
+  .desktopLanguage,
+  .login {
+    display: none !important;
+  }
+
+  /* Right side */
+  .topActions {
+    margin-left: auto;
+
     display: flex;
+
+    align-items: center;
+
+    gap: 2px;
   }
 
-  .navItem {
-    color: #d7d7d0;
-    justify-content: flex-start;
+  /* =====================================
+     GLOBE
+  ===================================== */
+
+  .mobileLanguageWrap {
+    display: block !important;
+
+    position: relative;
   }
 
-  .navItem.active {
-    background: #c4e45d;
-    color: #171714;
-  }
-
-  .mobileMenu {
-    display: grid;
-    place-items: center;
-
+  .mobileGlobe {
     width: 42px;
     height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    color: #c4e45d !important;
+  }
+
+  .mobileGlobe svg {
+    width: 23px;
+    height: 23px;
+
+    color: #c4e45d !important;
+
+    stroke: #c4e45d !important;
+
+    stroke-width: 1.8;
+  }
+
+  /* =====================================
+     HAMBURGER
+  ===================================== */
+
+  .mobileMenu {
+    width: 42px;
+    height: 42px;
+
+    display: flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
 
     color: #c4e45d !important;
   }
@@ -642,16 +824,198 @@ footer .logo span {
     height: 25px;
 
     color: #c4e45d !important;
+
+    stroke: #c4e45d !important;
+
+    stroke-width: 1.8;
+  }
+
+  /* =====================================
+     MOBILE LANGUAGE POPUP
+  ===================================== */
+
+  .mobileLanguageMenu {
+    position: absolute;
+
+    top: 48px;
+    right: 0;
+
+    width: 190px;
+
+    padding: 10px;
+
+    background: #20201c !important;
+
+    border: 1px solid #3a3a34;
+
+    border-radius: 14px;
+
+    box-shadow:
+      0 15px 35px rgba(0, 0, 0, 0.45);
+
+    z-index: 2000;
+  }
+
+  .mobileLanguageTitle {
+    padding: 5px 8px 9px;
+
+    color: #85857c;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+  }
+
+  .mobileLanguageOption {
+    width: 100%;
+
+    min-height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 8px 9px;
+
+    background: transparent;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    color: #d7d7d0;
+
+    font-size: 13px;
+
+    text-align: left;
+  }
+
+  .mobileLanguageOption:hover {
+    background: #2a2a24;
+  }
+
+  .mobileLanguageOption.active {
+    background: #292d1d;
+
+    color: #c4e45d;
+  }
+
+  .languageFlag {
+    font-size: 17px;
+  }
+
+  .languageCheck {
+    margin-left: auto;
+
+    color: #c4e45d;
+  }
+
+  /* =====================================
+     MOBILE MENU
+  ===================================== */
+
+  .mobileNav {
+    position: absolute;
+
+    top: 76px;
+
+    left: 0;
+    right: 0;
+
+    display: none;
+
+    flex-direction: column;
+
+    padding: 10px 20px 20px;
+
+    background: #171714 !important;
+
+    border-top: 1px solid #30302b;
+
+    box-shadow:
+      0 15px 35px rgba(0, 0, 0, 0.45);
+
+    z-index: 1900;
+  }
+
+  .mobileNav.open {
+    display: flex !important;
+  }
+
+  /* =====================================
+     ALL MOBILE MENU ITEMS
+  ===================================== */
+
+  .mobileNavItem {
+    width: 100%;
+
+    min-height: 47px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 9px 4px;
+
+    background: transparent !important;
+
+    border: 0;
+
+    color: #d7d7d0 !important;
+
+    font-size: 15px;
+
+    text-align: left;
+
+    border-radius: 0;
+  }
+
+  .mobileNavItem svg {
+    width: 19px;
+    height: 19px;
+
+    flex: 0 0 auto;
+
+    color: #c4e45d !important;
+
     stroke: #c4e45d !important;
   }
 
-  .login,
-  .lang {
-    display: none;
+  .mobileNavItem span {
+    color: inherit !important;
   }
+
+  .mobileNavItem:hover {
+    color: #c4e45d !important;
+  }
+
+  /* Login remains same style as list */
+  .mobileLoginItem {
+    color: #d7d7d0 !important;
+
+    border-bottom: 1px solid #30302b;
+
+    margin-bottom: 3px;
+  }
+
+  .mobileLoginItem svg {
+    color: #c4e45d !important;
+    stroke: #c4e45d !important;
+  }
+
+  /* =====================================
+     HERO MOBILE
+  ===================================== */
 
   .hero {
     height: auto;
+
     min-height: 650px;
   }
 
@@ -661,12 +1025,19 @@ footer .logo span {
 
   .hero h1 {
     font-size: 53px;
+
+    letter-spacing: -3px;
   }
 
   .hero p {
     font-size: 18px;
+
     line-height: 1.35;
   }
+
+  /* =====================================
+     EXPLORE MOBILE
+  ===================================== */
 
   .explore {
     grid-template-columns: 1fr;
@@ -674,8 +1045,11 @@ footer .logo span {
 
   .mapPanel {
     min-height: 430px;
+
     border-left: 0;
+
     border-top: 1px solid #ddd9ce;
+
     order: -1;
   }
 
@@ -708,6 +1082,7 @@ footer .logo span {
 
   .hero h1 {
     font-size: 53px;
+
     letter-spacing: -3px;
   }
 
@@ -721,418 +1096,7 @@ footer .logo span {
 
   .chip {
     padding: 9px 12px;
+
     font-size: 12px;
-  }
-}
-/* =========================================
-   MOBILE ACCOUNT & LANGUAGE
-========================================= */
-
-.mobileAccount {
-  display: none;
-}
-
-.desktopLanguage {
-  position: relative;
-}
-
-.desktopLanguageMenu {
-  display: none;
-}
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 900px) {
-
-  .mobileAccount {
-    display: block;
-    border-top: 1px solid #30302b;
-    margin-top: 8px;
-    padding-top: 18px;
-  }
-
-  .mobileLogin,
-  .mobileSignup {
-    width: 100%;
-    height: 48px;
-    border-radius: 24px;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-
-  .mobileLogin {
-    border: 1px solid #c4e45d;
-    color: #c4e45d;
-  }
-
-  .mobileSignup {
-    background: #c4e45d;
-    color: #171714;
-  }
-
-  .mobileLanguage {
-    margin-top: 18px;
-    padding-top: 18px;
-    border-top: 1px solid #30302b;
-  }
-
-  .mobileLanguageTitle {
-    display: block;
-    color: #898980;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
-  }
-
-  .languageOptions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 7px;
-  }
-
-  .languageOption {
-    min-height: 43px;
-    padding: 8px 10px;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    border: 1px solid #35352f;
-    border-radius: 10px;
-
-    color: #d7d7d0;
-    background: #20201c;
-
-    font-size: 13px;
-
-    text-align: left;
-  }
-
-  .languageOption.active {
-    border-color: #c4e45d;
-    color: #c4e45d;
-    background: #25291b;
-  }
-
-  .languageFlag {
-    font-size: 18px;
-  }
-
-  .languageCheck {
-    margin-left: auto;
-    color: #c4e45d;
-    font-weight: bold;
-  }
-
-  .desktopLanguage {
-    display: none;
-  }
-
-  .login,
-  .lang {
-    display: none;
-  }
-}
-/* =========================================
-   KECI MOBILE MENU
-========================================= */
-
-@media (max-width: 900px) {
-
-  /* Верхняя панель */
-  .topbar {
-    height: 76px;
-    padding: 0 18px;
-    background: #171714 !important;
-  }
-
-  /* Логотип */
-  .logo {
-    color: #c4e45d !important;
-  }
-
-  .logo span {
-    color: #ffffff !important;
-  }
-
-  /* Прячем desktop элементы */
-  .desktopNav,
-  .desktopLanguage,
-  .login {
-    display: none !important;
-  }
-
-  /* =====================================
-     ПРАВАЯ ЧАСТЬ
-  ===================================== */
-
-  .topActions {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-  }
-
-  /* Globe */
-  .mobileLanguageWrap {
-    display: block !important;
-    position: relative;
-  }
-
-  .mobileGlobe {
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: transparent;
-    border: 0;
-
-    color: #c4e45d !important;
-  }
-
-  .mobileGlobe svg {
-    width: 23px;
-    height: 23px;
-
-    color: #c4e45d !important;
-    stroke: #c4e45d !important;
-  }
-
-  /* Hamburger */
-  .mobileMenu {
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: transparent;
-    border: 0;
-
-    color: #c4e45d !important;
-  }
-
-  .mobileMenu svg {
-    width: 25px;
-    height: 25px;
-
-    color: #c4e45d !important;
-    stroke: #c4e45d !important;
-  }
-
-  /* =====================================
-     ЯЗЫКИ
-  ===================================== */
-
-  .mobileLanguageMenu {
-    position: absolute;
-
-    top: 48px;
-    right: 0;
-
-    width: 190px;
-
-    padding: 10px;
-
-    background: #20201c;
-
-    border: 1px solid #3a3a34;
-    border-radius: 14px;
-
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
-
-    z-index: 2000;
-  }
-
-  .mobileLanguageTitle {
-    padding: 5px 8px 9px;
-
-    color: #85857c;
-
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-  }
-
-  .mobileLanguageOption {
-    width: 100%;
-
-    min-height: 42px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 9px;
-
-    padding: 8px 9px;
-
-    background: transparent;
-    border: 0;
-    border-radius: 9px;
-
-    color: #d7d7d0;
-
-    font-size: 13px;
-
-    text-align: left;
-  }
-
-  .mobileLanguageOption:hover {
-    background: #2a2a24;
-  }
-
-  .mobileLanguageOption.active {
-    background: #292d1d;
-    color: #c4e45d;
-  }
-
-  .languageFlag {
-    font-size: 17px;
-  }
-
-  .languageCheck {
-    margin-left: auto;
-
-    color: #c4e45d;
-  }
-
-  /* =====================================
-     ОСНОВНОЕ МОБИЛЬНОЕ МЕНЮ
-  ===================================== */
-
-  .mobileNav {
-    position: absolute;
-
-    top: 76px;
-    left: 0;
-    right: 0;
-
-    display: none;
-
-    flex-direction: column;
-
-    padding: 10px 20px 20px;
-
-    background: #171714 !important;
-
-    border-top: 1px solid #30302b;
-
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
-
-    z-index: 1900;
-  }
-
-  .mobileNav.open {
-    display: flex !important;
-  }
-
-  /* =====================================
-     LOGIN
-  ===================================== */
-
-  .mobileAccountBlock {
-    width: 100%;
-
-    padding: 0;
-    margin: 0;
-
-    border: 0;
-  }
-
-  .mobileAccountItem {
-    width: 100%;
-
-    min-height: 47px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 9px 4px;
-
-    background: transparent;
-    border: 0;
-
-    color: #c4e45d;
-
-    font-size: 15px;
-    font-weight: 600;
-
-    text-align: left;
-  }
-
-  .mobileAccountItem svg {
-    width: 19px;
-    height: 19px;
-
-    color: #c4e45d;
-    stroke: #c4e45d;
-  }
-
-  /* =====================================
-     ЕДИНЫЙ СПИСОК
-  ===================================== */
-
-  .mobileNavSection {
-    display: flex !important;
-    flex-direction: column;
-
-    width: 100%;
-
-    padding: 0 !important;
-    margin: 0 !important;
-
-    border: 0 !important;
-  }
-
-  .mobileNavSection.bottomSection {
-    padding: 0 !important;
-    margin: 0 !important;
-
-    border: 0 !important;
-  }
-
-  .mobileNavItem {
-    width: 100%;
-
-    min-height: 47px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 9px 4px;
-
-    background: transparent;
-    border: 0;
-
-    color: #d7d7d0;
-
-    font-size: 15px;
-
-    text-align: left;
-  }
-
-  .mobileNavItem svg {
-    width: 19px;
-    height: 19px;
-
-    color: #c4e45d;
-    stroke: #c4e45d;
-  }
-
-  .mobileNavItem:active,
-  .mobileNavItem:hover {
-    color: #c4e45d;
   }
 }
