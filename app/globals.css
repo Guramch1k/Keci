@@ -1114,11 +1114,10 @@ footer .logo span {
 /* Затемняем только изображение карты */
 .realMap .leaflet-tile-pane {
   filter:
-    brightness(0.55)
-    contrast(1.05)
-    saturate(0.75);
+    brightness(0.42)
+    contrast(1.1)
+    saturate(0.7);
 }
-
 /* Оставляем маркеры и элементы карты нормальными */
 .realMap .leaflet-marker-pane,
 .realMap .leaflet-popup-pane,
