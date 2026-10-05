@@ -20,6 +20,9 @@ import {
   Menu,
   X,
   MapPin,
+  Globe,
+  Map,
+  LogIn,
 } from "lucide-react";
 
 const KeciMap = dynamic(() => import("./KeciMap"), { ssr: false });
@@ -89,15 +92,17 @@ export default function Home() {
   const [active, setActive] = useState("Все");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState("Medea Restaurant");
-  const [menu, setMenu] = useState(false);
-const [language, setLanguage] = useState("Русский");
 
-const languages = [
-  { code: "KA", name: "ქართული", flag: "🇬🇪" },
-  { code: "EN", name: "English", flag: "🇬🇧" },
-  { code: "HE", name: "עברית", flag: "🇮🇱" },
-  { code: "RU", name: "Русский", flag: "🇷🇺" },
-];
+  const [menu, setMenu] = useState(false);
+  const [languageOpen, setLanguageOpen] = useState(false);
+  const [language, setLanguage] = useState("Русский");
+
+  const languages = [
+    { code: "KA", name: "ქართული", flag: "🇬🇪" },
+    { code: "EN", name: "English", flag: "🇬🇧" },
+    { code: "HE", name: "עברית", flag: "🇮🇱" },
+    { code: "RU", name: "Русский", flag: "🇷🇺" },
+  ];
 
   const visible = useMemo(() => {
     const q = query.toLowerCase().trim();
@@ -110,6 +115,11 @@ const languages = [
     );
   }, [query]);
 
+  const closeMobilePanels = () => {
+    setMenu(false);
+    setLanguageOpen(false);
+  };
+
   return (
     <main className="site">
       <header className="topbar">
@@ -117,7 +127,8 @@ const languages = [
           keci<span>.</span>
         </div>
 
-        <nav className={menu ? "nav open" : "nav"}>
+        {/* DESKTOP NAVIGATION */}
+        <nav className="nav desktopNav">
           <button
             className="navItem active"
             onClick={() => setActive("Рестораны")}
@@ -153,78 +164,172 @@ const languages = [
           <button className="navItem">
             <Heart />
             Избранное
-            <div className="mobileAccount">
-  <button className="mobileLogin">
-    Войти
-  </button>
-
-  <button className="mobileSignup">
-    Регистрация
-  </button>
-
-  <div className="mobileLanguage">
-    <span className="mobileLanguageTitle">
-      Язык
-    </span>
-
-    <div className="languageOptions">
-      {languages.map((lang) => (
-        <button
-          key={lang.code}
-          className={
-            language === lang.name
-              ? "languageOption active"
-              : "languageOption"
-          }
-          onClick={() => setLanguage(lang.name)}
-        >
-          <span className="languageFlag">
-            {lang.flag}
-          </span>
-
-          <span>
-            {lang.name}
-          </span>
-
-          {language === lang.name && (
-            <span className="languageCheck">
-              ✓
-            </span>
-          )}
-        </button>
-      ))}
-    </div>
-  </div>
-</div>
           </button>
         </nav>
 
+        {/* MOBILE MENU */}
+        <div className={menu ? "mobileNav open" : "mobileNav"}>
+          <div className="mobileAccountBlock">
+            <button className="mobileAccountItem loginItem">
+              <LogIn />
+              <span>Войти / Регистрация</span>
+            </button>
+          </div>
+
+          <div className="mobileNavSection">
+            <button
+              className="mobileNavItem"
+              onClick={() => {
+                setActive("Рестораны");
+                closeMobilePanels();
+              }}
+            >
+              <UtensilsCrossed />
+              <span>Рестораны</span>
+            </button>
+
+            <button
+              className="mobileNavItem"
+              onClick={() => {
+                setActive("Клубы");
+                closeMobilePanels();
+              }}
+            >
+              <Music2 />
+              <span>Клубы</span>
+            </button>
+
+            <button
+              className="mobileNavItem"
+              onClick={() => {
+                setActive("Кафе");
+                closeMobilePanels();
+              }}
+            >
+              <Coffee />
+              <span>Кафе</span>
+            </button>
+
+            <button
+              className="mobileNavItem"
+              onClick={() => {
+                setActive("Бары");
+                closeMobilePanels();
+              }}
+            >
+              <Martini />
+              <span>Бары</span>
+            </button>
+          </div>
+
+          <div className="mobileNavSection bottomSection">
+            <button
+              className="mobileNavItem"
+              onClick={closeMobilePanels}
+            >
+              <Heart />
+              <span>Избранное</span>
+            </button>
+
+            <button
+              className="mobileNavItem"
+              onClick={closeMobilePanels}
+            >
+              <Map />
+              <span>Карта</span>
+            </button>
+          </div>
+        </div>
+
         <div className="topActions">
+          {/* DESKTOP LANGUAGE */}
           <div className="desktopLanguage">
-  <span className="lang">
-    {languages.find((l) => l.name === language)?.code || "RU"}
-    <ChevronDown />
-  </span>
+            <button
+              className="lang"
+              onClick={() => setLanguageOpen(!languageOpen)}
+            >
+              {languages.find((l) => l.name === language)?.code || "RU"}
+              <ChevronDown />
+            </button>
 
-  <div className="desktopLanguageMenu">
-    {languages.map((lang) => (
-      <button
-        key={lang.code}
-        onClick={() => setLanguage(lang.name)}
-      >
-        {lang.flag} {lang.name}
-      </button>
-    ))}
-  </div>
-</div>
+            {languageOpen && (
+              <div className="desktopLanguageMenu">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      setLanguage(lang.name);
+                      setLanguageOpen(false);
+                    }}
+                  >
+                    {lang.flag} {lang.name}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
 
+          {/* DESKTOP LOGIN */}
           <button className="login">
             Войти
           </button>
 
+          {/* MOBILE GLOBE */}
+          <div className="mobileLanguageWrap">
+            <button
+              className="mobileGlobe"
+              onClick={() => {
+                setLanguageOpen(!languageOpen);
+                setMenu(false);
+              }}
+              aria-label="Выбор языка"
+            >
+              <Globe />
+            </button>
+
+            {languageOpen && (
+              <div className="mobileLanguageMenu">
+                <div className="mobileLanguageTitle">
+                  Язык
+                </div>
+
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    className={
+                      language === lang.name
+                        ? "mobileLanguageOption active"
+                        : "mobileLanguageOption"
+                    }
+                    onClick={() => {
+                      setLanguage(lang.name);
+                      setLanguageOpen(false);
+                    }}
+                  >
+                    <span className="languageFlag">
+                      {lang.flag}
+                    </span>
+
+                    <span>{lang.name}</span>
+
+                    {language === lang.name && (
+                      <span className="languageCheck">
+                        ✓
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* MOBILE MENU BUTTON */}
           <button
             className="mobileMenu"
-            onClick={() => setMenu(!menu)}
+            onClick={() => {
+              setMenu(!menu);
+              setLanguageOpen(false);
+            }}
             aria-label="Меню"
           >
             {menu ? <X /> : <Menu />}
