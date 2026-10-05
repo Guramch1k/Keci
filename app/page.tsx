@@ -123,6 +123,8 @@ export default function Home() {
   return (
     <main className="site">
       <header className="topbar">
+
+        {/* LOGO */}
         <div className="logo">
           keci<span>.</span>
         </div>
@@ -169,86 +171,92 @@ export default function Home() {
 
         {/* MOBILE MENU */}
         <div className={menu ? "mobileNav open" : "mobileNav"}>
-          <div className="mobileAccountBlock">
-            <button className="mobileAccountItem loginItem">
-              <LogIn />
-              <span>Войти / Регистрация</span>
-            </button>
-          </div>
 
-          <div className="mobileNavSection">
-            <button
-              className="mobileNavItem"
-              onClick={() => {
-                setActive("Рестораны");
-                closeMobilePanels();
-              }}
-            >
-              <UtensilsCrossed />
-              <span>Рестораны</span>
-            </button>
+          {/* LOGIN */}
+          <button
+            className="mobileNavItem mobileLoginItem"
+            onClick={closeMobilePanels}
+          >
+            <LogIn />
+            <span>Войти / Регистрация</span>
+          </button>
 
-            <button
-              className="mobileNavItem"
-              onClick={() => {
-                setActive("Клубы");
-                closeMobilePanels();
-              }}
-            >
-              <Music2 />
-              <span>Клубы</span>
-            </button>
+          {/* ONE CONTINUOUS LIST */}
 
-            <button
-              className="mobileNavItem"
-              onClick={() => {
-                setActive("Кафе");
-                closeMobilePanels();
-              }}
-            >
-              <Coffee />
-              <span>Кафе</span>
-            </button>
+          <button
+            className="mobileNavItem"
+            onClick={() => {
+              setActive("Рестораны");
+              closeMobilePanels();
+            }}
+          >
+            <UtensilsCrossed />
+            <span>Рестораны</span>
+          </button>
 
-            <button
-              className="mobileNavItem"
-              onClick={() => {
-                setActive("Бары");
-                closeMobilePanels();
-              }}
-            >
-              <Martini />
-              <span>Бары</span>
-            </button>
-          </div>
+          <button
+            className="mobileNavItem"
+            onClick={() => {
+              setActive("Клубы");
+              closeMobilePanels();
+            }}
+          >
+            <Music2 />
+            <span>Клубы</span>
+          </button>
 
-          <div className="mobileNavSection bottomSection">
-            <button
-              className="mobileNavItem"
-              onClick={closeMobilePanels}
-            >
-              <Heart />
-              <span>Избранное</span>
-            </button>
+          <button
+            className="mobileNavItem"
+            onClick={() => {
+              setActive("Кафе");
+              closeMobilePanels();
+            }}
+          >
+            <Coffee />
+            <span>Кафе</span>
+          </button>
 
-            <button
-              className="mobileNavItem"
-              onClick={closeMobilePanels}
-            >
-              <Map />
-              <span>Карта</span>
-            </button>
-          </div>
+          <button
+            className="mobileNavItem"
+            onClick={() => {
+              setActive("Бары");
+              closeMobilePanels();
+            }}
+          >
+            <Martini />
+            <span>Бары</span>
+          </button>
+
+          <button
+            className="mobileNavItem"
+            onClick={closeMobilePanels}
+          >
+            <Heart />
+            <span>Избранное</span>
+          </button>
+
+          <button
+            className="mobileNavItem"
+            onClick={closeMobilePanels}
+          >
+            <Map />
+            <span>Карта</span>
+          </button>
         </div>
 
+        {/* RIGHT SIDE */}
         <div className="topActions">
+
           {/* DESKTOP LANGUAGE */}
           <div className="desktopLanguage">
             <button
               className="lang"
               onClick={() => setLanguageOpen(!languageOpen)}
             >
-              {languages.find((l) => l.name === language)?.code || "RU"}
+              {languages.find(
+                (l) => l.name === language
+              )?.code || "RU"}
+
               <ChevronDown />
             </button>
 
@@ -274,8 +282,9 @@ export default function Home() {
             Войти
           </button>
 
-          {/* MOBILE GLOBE */}
+          {/* MOBILE LANGUAGE */}
           <div className="mobileLanguageWrap">
+
             <button
               className="mobileGlobe"
               onClick={() => {
@@ -289,6 +298,7 @@ export default function Home() {
 
             {languageOpen && (
               <div className="mobileLanguageMenu">
+
                 <div className="mobileLanguageTitle">
                   Язык
                 </div>
@@ -310,7 +320,9 @@ export default function Home() {
                       {lang.flag}
                     </span>
 
-                    <span>{lang.name}</span>
+                    <span>
+                      {lang.name}
+                    </span>
 
                     {language === lang.name && (
                       <span className="languageCheck">
@@ -319,6 +331,7 @@ export default function Home() {
                     )}
                   </button>
                 ))}
+
               </div>
             )}
           </div>
@@ -334,10 +347,13 @@ export default function Home() {
           >
             {menu ? <X /> : <Menu />}
           </button>
+
         </div>
       </header>
 
+      {/* HERO */}
       <section className="hero">
+
         <Image
           src="/batumi.webp"
           alt="Ночной Батумский пейзаж"
@@ -350,6 +366,7 @@ export default function Home() {
         <div className="heroShade" />
 
         <div className="heroContent">
+
           <div className="eyebrow">
             РЕСТОРАНЫ · КЛУБЫ · БАРЫ · КАФЕ
           </div>
@@ -365,11 +382,14 @@ export default function Home() {
           </p>
 
           <div className="searchBox">
+
             <Search />
 
             <input
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) =>
+                setQuery(e.target.value)
+              }
               placeholder="Кухня, название, район..."
               aria-label="Поиск"
             />
@@ -377,9 +397,11 @@ export default function Home() {
             <button aria-label="Искать">
               <ArrowRight />
             </button>
+
           </div>
 
           <div className="chips">
+
             {categories.map(([label, type]) => (
               <button
                 key={label}
@@ -388,20 +410,28 @@ export default function Home() {
                     ? "chip selected"
                     : "chip"
                 }
-                onClick={() => setActive(label)}
+                onClick={() =>
+                  setActive(label)
+                }
               >
                 <CategoryIcon type={type} />
                 {label}
               </button>
             ))}
+
           </div>
         </div>
       </section>
 
+      {/* EXPLORE */}
       <section className="explore">
+
         <div className="listPanel">
+
           <div className="sectionHead">
+
             <div>
+
               <span className="eyebrow dark">
                 ПОПУЛЯРНОЕ В БАТУМИ
               </span>
@@ -415,15 +445,18 @@ export default function Home() {
                   {visible.length}
                 </small>
               </h2>
+
             </div>
 
             <button className="filter">
               <SlidersHorizontal />
               Фильтры
             </button>
+
           </div>
 
           <div className="filters">
+
             <button>
               Кухня
               <ChevronDown />
@@ -438,10 +471,13 @@ export default function Home() {
               Рейтинг
               <ChevronDown />
             </button>
+
           </div>
 
           <div className="restaurantList">
+
             {visible.map((p) => (
+
               <button
                 className={
                   selected === p.name
@@ -449,9 +485,13 @@ export default function Home() {
                     : "restaurant"
                 }
                 key={p.name}
-                onClick={() => setSelected(p.name)}
+                onClick={() =>
+                  setSelected(p.name)
+                }
               >
+
                 <div className="thumb">
+
                   <Image
                     src="/batumi.webp"
                     alt=""
@@ -462,32 +502,47 @@ export default function Home() {
                   <span>
                     <Heart />
                   </span>
+
                 </div>
 
                 <div className="placeInfo">
-                  <strong>{p.name}</strong>
+
+                  <strong>
+                    {p.name}
+                  </strong>
 
                   <div className="rating">
+
                     <Star />
+
                     {p.rating}
+
                     <span>
                       ({p.reviews})
                     </span>
+
                   </div>
 
-                  <p>{p.type}</p>
+                  <p>
+                    {p.type}
+                  </p>
 
                   <small>
                     <MapPin />
                     {p.distance}
                   </small>
+
                 </div>
+
               </button>
+
             ))}
+
           </div>
         </div>
 
         <div className="mapPanel">
+
           <KeciMap
             places={places}
             selected={selected}
@@ -500,10 +555,14 @@ export default function Home() {
           >
             <Navigation />
           </button>
+
         </div>
+
       </section>
 
+      {/* FOOTER */}
       <footer>
+
         <div className="logo">
           keci<span>.</span>
         </div>
@@ -515,7 +574,9 @@ export default function Home() {
         <span>
           © 2026 keci
         </span>
+
       </footer>
+
     </main>
   );
 }
