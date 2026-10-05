@@ -90,6 +90,14 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState("Medea Restaurant");
   const [menu, setMenu] = useState(false);
+const [language, setLanguage] = useState("Русский");
+
+const languages = [
+  { code: "KA", name: "ქართული", flag: "🇬🇪" },
+  { code: "EN", name: "English", flag: "🇬🇧" },
+  { code: "HE", name: "עברית", flag: "🇮🇱" },
+  { code: "RU", name: "Русский", flag: "🇷🇺" },
+];
 
   const visible = useMemo(() => {
     const q = query.toLowerCase().trim();
@@ -145,14 +153,70 @@ export default function Home() {
           <button className="navItem">
             <Heart />
             Избранное
+            <div className="mobileAccount">
+  <button className="mobileLogin">
+    Войти
+  </button>
+
+  <button className="mobileSignup">
+    Регистрация
+  </button>
+
+  <div className="mobileLanguage">
+    <span className="mobileLanguageTitle">
+      Язык
+    </span>
+
+    <div className="languageOptions">
+      {languages.map((lang) => (
+        <button
+          key={lang.code}
+          className={
+            language === lang.name
+              ? "languageOption active"
+              : "languageOption"
+          }
+          onClick={() => setLanguage(lang.name)}
+        >
+          <span className="languageFlag">
+            {lang.flag}
+          </span>
+
+          <span>
+            {lang.name}
+          </span>
+
+          {language === lang.name && (
+            <span className="languageCheck">
+              ✓
+            </span>
+          )}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
           </button>
         </nav>
 
         <div className="topActions">
-          <span className="lang">
-            RU
-            <ChevronDown />
-          </span>
+          <div className="desktopLanguage">
+  <span className="lang">
+    {languages.find((l) => l.name === language)?.code || "RU"}
+    <ChevronDown />
+  </span>
+
+  <div className="desktopLanguageMenu">
+    {languages.map((lang) => (
+      <button
+        key={lang.code}
+        onClick={() => setLanguage(lang.name)}
+      >
+        {lang.flag} {lang.name}
+      </button>
+    ))}
+  </div>
+</div>
 
           <button className="login">
             Войти
