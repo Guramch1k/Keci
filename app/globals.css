@@ -1099,7 +1099,9 @@ footer .logo span {
 
     font-size: 12px;
   }
-  /* =========================================
+  }
+
+/* =========================================
    FULL BATUMI MAP
 ========================================= */
 
@@ -1497,20 +1499,21 @@ footer .logo span {
     height: 62px;
     flex-basis: 62px;
   }
+}
 
 /* =========================================
    KEСI HOME MAP — DARK
 ========================================= */
+
+.realMap {
+  background: #20221f;
+}
 
 .realMap .leaflet-tile {
   filter:
     brightness(.55)
     contrast(1.15)
     saturate(.55);
-}
-
-.realMap {
-  background: #20221f;
 }
 
 .keci-marker {
@@ -1547,4 +1550,3 @@ footer .logo span {
   border-radius: 50%;
   background: #c4e45d;
 }
-  
