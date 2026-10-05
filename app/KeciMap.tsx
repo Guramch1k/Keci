@@ -30,22 +30,26 @@ export default function KeciMap({
 }) {
   const icon = new L.DivIcon({
     className: "keci-marker",
-    html: "<span></span>",
-    iconSize: [38, 38],
-    iconAnchor: [19, 38],
-    popupAnchor: [0, -38],
+    html: `
+      <div class="keci-marker-inner">
+        <span></span>
+      </div>
+    `,
+    iconSize: [44, 44],
+    iconAnchor: [22, 44],
+    popupAnchor: [0, -44],
   });
 
   return (
     <MapContainer
       center={[41.646, 41.636]}
       zoom={14}
-      scrollWheelZoom
+      scrollWheelZoom={true}
       className="realMap"
     >
       <TileLayer
-        attribution="&copy; Esri, OpenStreetMap contributors"
-        url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+        attribution="&copy; OpenStreetMap contributors"
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
       {places.map((place) => (
