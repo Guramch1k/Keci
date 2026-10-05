@@ -1935,3 +1935,342 @@ footer .logo span {
     padding: 9px 10px;
   }
 }
+/* =========================================
+   KECI REAL BATUMI SVG MAP
+========================================= */
+
+.keciHomeMap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 620px;
+  overflow: hidden;
+  background: #11130f;
+  color: white;
+}
+
+.keciBatumiMap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.keciMapBg {
+  fill: #11130f;
+}
+
+.keciSea {
+  fill: #0b1515;
+  opacity: .9;
+}
+
+.keciCoastline {
+  fill: none;
+  stroke: #c4e45d;
+  stroke-width: 2;
+  opacity: .8;
+  vector-effect: non-scaling-stroke;
+}
+
+.keciRoad {
+  fill: none;
+  stroke: rgba(255,255,255,.055);
+  stroke-width: .7;
+  vector-effect: non-scaling-stroke;
+}
+
+.keciRoadSecondary {
+  stroke: rgba(255,255,255,.12);
+  stroke-width: 1.1;
+}
+
+.keciRoadPrimary {
+  stroke: rgba(196,228,93,.27);
+  stroke-width: 1.8;
+}
+
+/* ==============================
+   HEADER
+============================== */
+
+.keciMapHeader {
+  position: absolute;
+  top: 24px;
+  left: 28px;
+  right: 28px;
+  z-index: 20;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  pointer-events: none;
+}
+
+.keciMapHeader div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.keciMapHeader span {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,.4);
+}
+
+.keciMapHeader strong {
+  font-size: 20px;
+  letter-spacing: -.7px;
+}
+
+.keciMapHeader small {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,.25);
+}
+
+/* ==============================
+   VENUES
+============================== */
+
+.keciVenue {
+  cursor: pointer;
+}
+
+.keciVenueHalo {
+  fill: rgba(196,228,93,.08);
+  stroke: rgba(196,228,93,.35);
+  stroke-width: 1.5;
+  transition: .2s ease;
+}
+
+.keciVenuePoint {
+  fill: #c4e45d;
+  stroke: #171714;
+  stroke-width: 2;
+  transition: .2s ease;
+}
+
+.keciVenue:hover .keciVenueHalo {
+  fill: rgba(196,228,93,.18);
+}
+
+.keciVenue.active .keciVenueHalo {
+  fill: rgba(196,228,93,.2);
+  stroke: #c4e45d;
+}
+
+.keciVenue.active .keciVenuePoint {
+  fill: white;
+  stroke: #c4e45d;
+  stroke-width: 3;
+}
+
+/* ==============================
+   VENUE CARD
+============================== */
+
+.keciVenueCard {
+  position: absolute;
+
+  transform:
+    translate(-50%, calc(-100% - 18px));
+
+  z-index: 50;
+
+  min-width: 175px;
+
+  padding: 12px 14px;
+
+  background: rgba(23,23,20,.97);
+
+  border:
+    1px solid
+    rgba(196,228,93,.4);
+
+  border-radius: 10px;
+
+  text-align: left;
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.45);
+}
+
+.keciVenueCard::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -5px;
+  left: 50%;
+
+  width: 9px;
+  height: 9px;
+
+  background: #171714;
+
+  border-right:
+    1px solid
+    rgba(196,228,93,.4);
+
+  border-bottom:
+    1px solid
+    rgba(196,228,93,.4);
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+}
+
+.keciVenueCard strong {
+  display: block;
+
+  color: white;
+
+  font-size: 12px;
+
+  margin-bottom: 5px;
+}
+
+.keciVenueCard span {
+  display: block;
+
+  color: #c4e45d;
+
+  font-size: 10px;
+
+  margin-bottom: 4px;
+}
+
+.keciVenueCard small {
+  display: block;
+
+  color: #888a82;
+
+  font-size: 9px;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+.keciMapFooter {
+  position: absolute;
+
+  left: 28px;
+  right: 28px;
+  bottom: 20px;
+
+  z-index: 20;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  pointer-events: none;
+}
+
+.keciMapFooter span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: rgba(255,255,255,.4);
+
+  font-size: 9px;
+}
+
+.keciMapFooter i {
+  display: block;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #c4e45d;
+
+  box-shadow:
+    0 0 10px
+    rgba(196,228,93,.5);
+}
+
+.keciMapFooter small {
+  color: rgba(255,255,255,.2);
+
+  font-size: 8px;
+}
+
+/* ==============================
+   LOADING
+============================== */
+
+.keciMapLoading {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.keciMapLoadingLogo {
+  font-size: 30px;
+
+  font-weight: 800;
+
+  letter-spacing: -2px;
+
+  color: #c4e45d;
+}
+
+.keciMapLoadingLogo span {
+  color: white;
+}
+
+.keciMapLoading > span {
+  color: rgba(255,255,255,.35);
+
+  font-size: 10px;
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 900px) {
+
+  .keciHomeMap {
+    min-height: 430px;
+  }
+
+  .keciMapHeader {
+    top: 18px;
+    left: 18px;
+    right: 18px;
+  }
+
+  .keciMapHeader strong {
+    font-size: 16px;
+  }
+
+  .keciMapHeader small {
+    font-size: 7px;
+  }
+
+  .keciMapFooter {
+    left: 18px;
+    right: 18px;
+    bottom: 16px;
+  }
+
+  .keciVenueCard {
+    min-width: 145px;
+    padding: 10px 11px;
+  }
+}
