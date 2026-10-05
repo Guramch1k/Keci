@@ -1550,3 +1550,388 @@ footer .logo span {
   border-radius: 50%;
   background: #c4e45d;
 }
+/* =========================================
+   KEСI — CUSTOM BATUMI MAP
+========================================= */
+
+.keciHomeMap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 620px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      #252721 0%,
+      #1c1d1a 45%,
+      #151613 100%
+    );
+  color: #ffffff;
+}
+
+/* subtle texture */
+
+.keciMapNoise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .12;
+  background-image:
+    radial-gradient(
+      rgba(255,255,255,.25) .6px,
+      transparent .6px
+    );
+  background-size: 7px 7px;
+}
+
+/* map title */
+
+.keciMapLabel {
+  position: absolute;
+  left: 28px;
+  top: 27px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.keciMapLabel span {
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  color: #8d8f87;
+  font-weight: 700;
+}
+
+.keciMapLabel strong {
+  font-size: 18px;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+/* legend hint */
+
+.keciMapHint {
+  position: absolute;
+  right: 28px;
+  top: 29px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #aaa9a0;
+  font-size: 10px;
+}
+
+.keciMapHintDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c4e45d;
+  box-shadow: 0 0 10px rgba(196,228,93,.5);
+}
+
+/* sea */
+
+.keciSea {
+  position: absolute;
+  left: -10%;
+  top: 42%;
+  width: 45%;
+  height: 45%;
+  opacity: .55;
+  pointer-events: none;
+}
+
+.keciSea span {
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  transform: rotate(-72deg);
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: rgba(196,228,93,.2);
+}
+
+/* SVG */
+
+.keciBatumiSvg {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  top: 5%;
+  overflow: visible;
+}
+
+/* city */
+
+.keciCityShape {
+  fill: rgba(196,228,93,.035);
+  stroke: rgba(196,228,93,.55);
+  stroke-width: .45;
+  vector-effect: non-scaling-stroke;
+}
+
+/* coastline */
+
+.keciCoastline {
+  fill: none;
+  stroke: rgba(196,228,93,.7);
+  stroke-width: .65;
+  vector-effect: non-scaling-stroke;
+}
+
+/* main roads */
+
+.keciRoad {
+  fill: none;
+  stroke: rgba(255,255,255,.14);
+  stroke-width: .38;
+  vector-effect: non-scaling-stroke;
+}
+
+.keciRoad.major {
+  stroke: rgba(196,228,93,.3);
+  stroke-width: .6;
+}
+
+/* small streets */
+
+.keciStreet {
+  fill: none;
+  stroke: rgba(255,255,255,.07);
+  stroke-width: .24;
+  vector-effect: non-scaling-stroke;
+}
+
+/* district names */
+
+.keciDistrict {
+  fill: rgba(255,255,255,.27);
+  font-size: 2.2px;
+  letter-spacing: .45px;
+  font-weight: 700;
+}
+
+/* sea */
+
+.keciSeaLine {
+  fill: none;
+  stroke: rgba(196,228,93,.13);
+  stroke-width: .35;
+  stroke-dasharray: 1.5 2;
+}
+
+/* points layer */
+
+.keciMapPoints {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+}
+
+/* point */
+
+.keciPlacePoint {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  z-index: 40;
+}
+
+/* outer pulse */
+
+.keciPointPulse {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(196,228,93,.08);
+  border: 1px solid rgba(196,228,93,.3);
+  transition: .25s ease;
+}
+
+/* center */
+
+.keciPointCore {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #c4e45d;
+  border: 2px solid #171714;
+  box-shadow:
+    0 0 0 1px rgba(196,228,93,.65),
+    0 0 15px rgba(196,228,93,.35);
+}
+
+/* selected */
+
+.keciPlacePoint.selected {
+  z-index: 100;
+}
+
+.keciPlacePoint.selected .keciPointPulse {
+  width: 30px;
+  height: 30px;
+  background: rgba(196,228,93,.12);
+  border-color: #c4e45d;
+}
+
+.keciPlacePoint.selected .keciPointCore {
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 2px #c4e45d,
+    0 0 22px rgba(196,228,93,.7);
+}
+
+/* hover */
+
+.keciPlacePoint:hover .keciPointPulse {
+  width: 30px;
+  height: 30px;
+  background: rgba(196,228,93,.12);
+}
+
+/* popup */
+
+.keciPointPopup {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  min-width: 170px;
+  padding: 11px 13px;
+  border-radius: 10px;
+  background: rgba(23,23,20,.96);
+  border: 1px solid rgba(196,228,93,.35);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.35);
+  text-align: left;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.keciPointPopup::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 9px;
+  height: 9px;
+  background: #171714;
+  border-right: 1px solid rgba(196,228,93,.35);
+  border-bottom: 1px solid rgba(196,228,93,.35);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.keciPointPopup strong {
+  display: block;
+  font-size: 12px;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.keciPointPopup small {
+  font-size: 10px;
+  color: #9e9e95;
+}
+
+/* legend */
+
+.keciMapLegend {
+  position: absolute;
+  left: 28px;
+  bottom: 25px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #85867f;
+  font-size: 10px;
+}
+
+.keciMapLegend div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legendDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: block;
+}
+
+.restaurantDot {
+  background: #c4e45d;
+}
+
+.barDot {
+  background: #ffffff;
+}
+
+.clubDot {
+  background: #777a70;
+}
+
+
+/* =========================================
+   MOBILE CUSTOM MAP
+========================================= */
+
+@media (max-width: 900px) {
+
+  .keciHomeMap {
+    min-height: 430px;
+  }
+
+  .keciBatumiSvg {
+    width: 108%;
+    height: 100%;
+    left: -4%;
+    top: 4%;
+  }
+
+  .keciMapLabel {
+    left: 20px;
+    top: 20px;
+  }
+
+  .keciMapLabel strong {
+    font-size: 16px;
+  }
+
+  .keciMapHint {
+    right: 18px;
+    top: 22px;
+    font-size: 9px;
+  }
+
+  .keciMapLegend {
+    left: 20px;
+    bottom: 18px;
+    gap: 11px;
+    font-size: 9px;
+  }
+
+  .keciPointPopup {
+    min-width: 145px;
+    padding: 9px 10px;
+  }
+}
