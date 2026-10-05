@@ -1099,27 +1099,3 @@ footer .logo span {
 
     font-size: 12px;
   }
-/* =========================================
-   DARK MAP
-========================================= */
-
-.mapPanel {
-  background: #151a20;
-}
-
-/* Darken Leaflet map tiles */
-.leaflet-container {
-  background: #151a20 !important;
-}
-
-.leaflet-tile {
-  filter: brightness(0.58) contrast(1.08) saturate(0.75);
-}
-
-/* Keep Keci markers and controls unchanged */
-.leaflet-marker-icon,
-.leaflet-marker-shadow,
-.leaflet-popup,
-.leaflet-control {
-  filter: none !important;
-}
