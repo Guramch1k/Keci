@@ -1498,4 +1498,53 @@ footer .logo span {
     flex-basis: 62px;
   }
 
+/* =========================================
+   KEСI HOME MAP — DARK
+========================================= */
+
+.realMap .leaflet-tile {
+  filter:
+    brightness(.55)
+    contrast(1.15)
+    saturate(.55);
 }
+
+.realMap {
+  background: #20221f;
+}
+
+.keci-marker {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.keci-marker-inner {
+  width: 44px;
+  height: 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keci-marker-inner::before {
+  content: "";
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: #171714;
+  border: 3px solid #c4e45d;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 7px 20px rgba(0,0,0,.45);
+}
+
+.keci-marker-inner span {
+  position: relative;
+  z-index: 2;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c4e45d;
+}
+  
