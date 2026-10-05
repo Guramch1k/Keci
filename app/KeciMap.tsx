@@ -1,7 +1,14 @@
 "use client";
 
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+} from "react-leaflet";
+
 import L from "leaflet";
+
 import "leaflet/dist/leaflet.css";
 
 type Place = {
@@ -30,20 +37,29 @@ export default function KeciMap({
   });
 
   return (
-    <MapContainer center={[41.646, 41.636]} zoom={14} scrollWheelZoom className="realMap">
+    <MapContainer
+      center={[41.646, 41.636]}
+      zoom={14}
+      scrollWheelZoom
+      className="realMap"
+    >
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
+        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
       />
-      {places.map(place => (
+
+      {places.map((place) => (
         <Marker
           key={place.name}
           position={[place.lat, place.lng]}
           icon={icon}
-          eventHandlers={{ click: () => onSelect(place.name) }}
+          eventHandlers={{
+            click: () => onSelect(place.name),
+          }}
         >
           <Popup>
-            <strong>{place.name}</strong><br />
+            <strong>{place.name}</strong>
+            <br />
             {place.type} · ★ {place.rating}
           </Popup>
         </Marker>
