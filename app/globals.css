@@ -1099,4 +1099,29 @@ footer .logo span {
 
     font-size: 12px;
   }
+/* =========================================
+   DARK MAP ONLY
+========================================= */
+
+.mapPanel {
+  background: #111923;
+}
+
+.realMap {
+  background: #111923;
+}
+
+/* Затемняем только изображение карты */
+.realMap .leaflet-tile-pane {
+  filter:
+    brightness(0.55)
+    contrast(1.05)
+    saturate(0.75);
+}
+
+/* Оставляем маркеры и элементы карты нормальными */
+.realMap .leaflet-marker-pane,
+.realMap .leaflet-popup-pane,
+.realMap .leaflet-control-container {
+  filter: none !important;
 }
