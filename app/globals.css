@@ -838,3 +838,301 @@ footer .logo span {
     display: none;
   }
 }
+/* =========================================
+   KECI MOBILE MENU
+========================================= */
+
+@media (max-width: 900px) {
+
+  /* Верхняя панель */
+  .topbar {
+    height: 76px;
+    padding: 0 18px;
+    background: #171714 !important;
+  }
+
+  /* Логотип */
+  .logo {
+    color: #c4e45d !important;
+  }
+
+  .logo span {
+    color: #ffffff !important;
+  }
+
+  /* Прячем desktop элементы */
+  .desktopNav,
+  .desktopLanguage,
+  .login {
+    display: none !important;
+  }
+
+  /* =====================================
+     ПРАВАЯ ЧАСТЬ
+  ===================================== */
+
+  .topActions {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  /* Globe */
+  .mobileLanguageWrap {
+    display: block !important;
+    position: relative;
+  }
+
+  .mobileGlobe {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: 0;
+
+    color: #c4e45d !important;
+  }
+
+  .mobileGlobe svg {
+    width: 23px;
+    height: 23px;
+
+    color: #c4e45d !important;
+    stroke: #c4e45d !important;
+  }
+
+  /* Hamburger */
+  .mobileMenu {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: 0;
+
+    color: #c4e45d !important;
+  }
+
+  .mobileMenu svg {
+    width: 25px;
+    height: 25px;
+
+    color: #c4e45d !important;
+    stroke: #c4e45d !important;
+  }
+
+  /* =====================================
+     ЯЗЫКИ
+  ===================================== */
+
+  .mobileLanguageMenu {
+    position: absolute;
+
+    top: 48px;
+    right: 0;
+
+    width: 190px;
+
+    padding: 10px;
+
+    background: #20201c;
+
+    border: 1px solid #3a3a34;
+    border-radius: 14px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+
+    z-index: 2000;
+  }
+
+  .mobileLanguageTitle {
+    padding: 5px 8px 9px;
+
+    color: #85857c;
+
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .mobileLanguageOption {
+    width: 100%;
+
+    min-height: 42px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 8px 9px;
+
+    background: transparent;
+    border: 0;
+    border-radius: 9px;
+
+    color: #d7d7d0;
+
+    font-size: 13px;
+
+    text-align: left;
+  }
+
+  .mobileLanguageOption:hover {
+    background: #2a2a24;
+  }
+
+  .mobileLanguageOption.active {
+    background: #292d1d;
+    color: #c4e45d;
+  }
+
+  .languageFlag {
+    font-size: 17px;
+  }
+
+  .languageCheck {
+    margin-left: auto;
+
+    color: #c4e45d;
+  }
+
+  /* =====================================
+     ОСНОВНОЕ МОБИЛЬНОЕ МЕНЮ
+  ===================================== */
+
+  .mobileNav {
+    position: absolute;
+
+    top: 76px;
+    left: 0;
+    right: 0;
+
+    display: none;
+
+    flex-direction: column;
+
+    padding: 10px 20px 20px;
+
+    background: #171714 !important;
+
+    border-top: 1px solid #30302b;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+
+    z-index: 1900;
+  }
+
+  .mobileNav.open {
+    display: flex !important;
+  }
+
+  /* =====================================
+     LOGIN
+  ===================================== */
+
+  .mobileAccountBlock {
+    width: 100%;
+
+    padding: 0;
+    margin: 0;
+
+    border: 0;
+  }
+
+  .mobileAccountItem {
+    width: 100%;
+
+    min-height: 47px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 9px 4px;
+
+    background: transparent;
+    border: 0;
+
+    color: #c4e45d;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    text-align: left;
+  }
+
+  .mobileAccountItem svg {
+    width: 19px;
+    height: 19px;
+
+    color: #c4e45d;
+    stroke: #c4e45d;
+  }
+
+  /* =====================================
+     ЕДИНЫЙ СПИСОК
+  ===================================== */
+
+  .mobileNavSection {
+    display: flex !important;
+    flex-direction: column;
+
+    width: 100%;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 0 !important;
+  }
+
+  .mobileNavSection.bottomSection {
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 0 !important;
+  }
+
+  .mobileNavItem {
+    width: 100%;
+
+    min-height: 47px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 9px 4px;
+
+    background: transparent;
+    border: 0;
+
+    color: #d7d7d0;
+
+    font-size: 15px;
+
+    text-align: left;
+  }
+
+  .mobileNavItem svg {
+    width: 19px;
+    height: 19px;
+
+    color: #c4e45d;
+    stroke: #c4e45d;
+  }
+
+  .mobileNavItem:active,
+  .mobileNavItem:hover {
+    color: #c4e45d;
+  }
+}
