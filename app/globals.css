@@ -724,3 +724,117 @@ footer .logo span {
     font-size: 12px;
   }
 }
+/* =========================================
+   MOBILE ACCOUNT & LANGUAGE
+========================================= */
+
+.mobileAccount {
+  display: none;
+}
+
+.desktopLanguage {
+  position: relative;
+}
+
+.desktopLanguageMenu {
+  display: none;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .mobileAccount {
+    display: block;
+    border-top: 1px solid #30302b;
+    margin-top: 8px;
+    padding-top: 18px;
+  }
+
+  .mobileLogin,
+  .mobileSignup {
+    width: 100%;
+    height: 48px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .mobileLogin {
+    border: 1px solid #c4e45d;
+    color: #c4e45d;
+  }
+
+  .mobileSignup {
+    background: #c4e45d;
+    color: #171714;
+  }
+
+  .mobileLanguage {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid #30302b;
+  }
+
+  .mobileLanguageTitle {
+    display: block;
+    color: #898980;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+
+  .languageOptions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+
+  .languageOption {
+    min-height: 43px;
+    padding: 8px 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    border: 1px solid #35352f;
+    border-radius: 10px;
+
+    color: #d7d7d0;
+    background: #20201c;
+
+    font-size: 13px;
+
+    text-align: left;
+  }
+
+  .languageOption.active {
+    border-color: #c4e45d;
+    color: #c4e45d;
+    background: #25291b;
+  }
+
+  .languageFlag {
+    font-size: 18px;
+  }
+
+  .languageCheck {
+    margin-left: auto;
+    color: #c4e45d;
+    font-weight: bold;
+  }
+
+  .desktopLanguage {
+    display: none;
+  }
+
+  .login,
+  .lang {
+    display: none;
+  }
+}
