@@ -20,7 +20,7 @@ export default function KeciMap({}: Props) {
   return (
     <div className="keciHomeMap">
       <Image
-        src="/keci-map.jpeg"
+        src="/IMG_5514.jpeg"
         alt="Keci — карта Батуми"
         fill
         priority
