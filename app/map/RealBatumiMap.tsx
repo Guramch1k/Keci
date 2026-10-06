@@ -6,67 +6,87 @@ import {
   Marker,
   Popup,
   ZoomControl,
+  useMap,
 } from "react-leaflet";
 
 import L from "leaflet";
+import { useEffect, useMemo } from "react";
 
 import "leaflet/dist/leaflet.css";
 
-type Place = {
+export type Place = {
+  id: string;
   name: string;
-  rating: string;
-  type: string;
   lat: number;
   lng: number;
+  cuisine: string;
+  address: string;
+  phone: string;
+  website: string;
+  openingHours: string;
 };
 
-const places: Place[] = [
-  {
-    name: "Medea Restaurant",
-    rating: "4.8",
-    type: "Грузинская · $$",
-    lat: 41.6502,
-    lng: 41.6367,
-  },
-  {
-    name: "Heart of Batumi",
-    rating: "4.7",
-    type: "Грузинская · $$",
-    lat: 41.6471,
-    lng: 41.6359,
-  },
-  {
-    name: "Umami at Clouds",
-    rating: "4.9",
-    type: "Азиатская · $$$",
-    lat: 41.6418,
-    lng: 41.6338,
-  },
-  {
-    name: "Black Sea Restaurant",
-    rating: "4.6",
-    type: "Морепродукты · $$",
-    lat: 41.6492,
-    lng: 41.6415,
-  },
-];
+type Props = {
+  places: Place[];
+  selected: string | null;
+  onSelect: (id: string) => void;
+};
+
+function MapController({
+  selected,
+  places,
+}: {
+  selected: string | null;
+  places: Place[];
+}) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!selected) return;
+
+    const place = places.find(
+      (item) => item.id === selected
+    );
+
+    if (place) {
+      map.flyTo(
+        [place.lat, place.lng],
+        Math.max(map.getZoom(), 16),
+        {
+          duration: 0.6,
+        }
+      );
+    }
+  }, [selected, places, map]);
+
+  return null;
+}
 
 function createKeciIcon() {
   return new L.DivIcon({
     className: "keci-real-marker",
+
     html: `
       <div class="keci-real-marker-inner">
         <span></span>
       </div>
     `,
+
     iconSize: [44, 44],
     iconAnchor: [22, 44],
     popupAnchor: [0, -42],
   });
 }
 
-export default function RealBatumiMap() {
-  const icon = createKeciIcon();
+export default function RealBatumiMap({
+  places,
+  selected,
+  onSelect,
+}: Props) {
+  const icon = useMemo(
+    () => createKeciIcon(),
+    []
+  );
 
   return (
     <MapContainer
@@ -78,44 +98,76 @@ export default function RealBatumiMap() {
       zoomControl={false}
       className="realBatumiMap"
     >
-
       <ZoomControl position="bottomright" />
 
       <TileLayer
-        attribution='&copy; OpenStreetMap contributors'
+        attribution="&copy; OpenStreetMap contributors"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+
+      <MapController
+        selected={selected}
+        places={places}
       />
 
       {places.map((place) => (
         <Marker
-          key={place.name}
-          position={[place.lat, place.lng]}
+          key={place.id}
+          position={[
+            place.lat,
+            place.lng,
+          ]}
           icon={icon}
+          eventHandlers={{
+            click: () =>
+              onSelect(place.id),
+          }}
         >
           <Popup>
             <div className="keciPopup">
+              <strong>{place.name}</strong>
 
-              <strong>
-                {place.name}
-              </strong>
+              {place.cuisine && (
+                <span>
+                  {place.cuisine.replaceAll(
+                    "_",
+                    " · "
+                  )}
+                </span>
+              )}
 
-              <div>
-                ★ {place.rating}
-              </div>
+              {place.address && (
+                <span>
+                  {place.address}
+                </span>
+              )}
 
-              <span>
-                {place.type}
-              </span>
+              {place.openingHours && (
+                <small>
+                  {place.openingHours}
+                </small>
+              )}
 
-              <button>
-                Открыть
-              </button>
-
+              <a
+                href={
+                  "https://www.openstreetmap.org/?mlat=" +
+                  place.lat +
+                  "&mlon=" +
+                  place.lng +
+                  "#map=19/" +
+                  place.lat +
+                  "/" +
+                  place.lng
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Открыть в OpenStreetMap
+              </a>
             </div>
           </Popup>
         </Marker>
       ))}
-
     </MapContainer>
   );
 }
