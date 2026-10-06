@@ -2311,3 +2311,44 @@ footer .logo span {
   }
 
 }
+/* =========================================
+   KECI — DARK RESTAURANT LIST
+========================================= */
+
+.listPanel {
+  background: #080d0d !important;
+  color: #ffffff;
+}
+
+.restaurant {
+  background: #0d1414 !important;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.restaurant:hover,
+.restaurant.selected {
+  background: #121b1b !important;
+}
+
+.placeInfo strong {
+  color: #ffffff;
+}
+
+.placeInfo p {
+  color: #9ba5a3;
+}
+
+.placeInfo small {
+  color: #7f8b89;
+}
+
+.sectionHead h2 {
+  color: #ffffff;
+}
+
+.filters button {
+  background: #0d1414 !important;
+  color: #dce3e1;
+  border-color: rgba(255, 255, 255, 0.08);
+}
