@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Search,
   ChevronDown,
@@ -89,6 +90,8 @@ function CategoryIcon({ type }: { type: string }) {
 }
 
 export default function Home() {
+  const router = useRouter();
+
   const [active, setActive] = useState("Все");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState("Medea Restaurant");
@@ -236,12 +239,15 @@ export default function Home() {
           </button>
 
           <button
-            className="mobileNavItem"
-            onClick={closeMobilePanels}
-          >
-            <Map />
-            <span>Карта</span>
-          </button>
+  className="mobileNavItem"
+  onClick={() => {
+    closeMobilePanels();
+    router.push("/map");
+  }}
+>
+  <Map />
+  <span>Карта</span>
+</button>
         </div>
 
         {/* RIGHT SIDE */}
