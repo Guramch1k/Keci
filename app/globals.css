@@ -3172,3 +3172,47 @@ footer .logo span {
     width: 100%;
   }
 }
+/* REAL CLUB PHOTOS */
+
+.clubVisual {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.clubVisual::before {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.05) 35%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+  opacity: 1;
+}
+
+.clubVisual::after {
+  display: none;
+}
+
+.clubVisualOverlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.08) 0%,
+      transparent 40%,
+      rgba(0, 0, 0, 0.45) 100%
+    );
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+.clubVisualNumber,
+.clubFavorite,
+.clubVisualBottom {
+  z-index: 3;
+}
