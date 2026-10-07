@@ -143,12 +143,15 @@ export default function Home() {
           </button>
 
           <button
-            className="navItem"
-            onClick={() => setActive("Клубы")}
-          >
-            <Music2 />
-            Клубы
-          </button>
+  className="mobileNavItem"
+  onClick={() => {
+    closeMobilePanels();
+    router.push("/clubs");
+  }}
+>
+  <Music2 />
+  <span>Клубы</span>
+</button>
 
           <button
             className="navItem"
