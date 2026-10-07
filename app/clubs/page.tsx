@@ -22,7 +22,7 @@ const clubs = [
     age: "24+",
     music: "House · Electronic",
     status: "Работает вне сезона",
-    image: "/clubs/rooftop34.webp",
+    image: "/clubs/%20%20%20%20rooftop34.jpg.WEBP",
     map: "https://www.openstreetmap.org/?mlat=41.61049&mlon=41.63724#map=18/41.61049/41.63724",
   },
 
@@ -37,7 +37,7 @@ const clubs = [
     age: "24+",
     music: "Open Format · DJ",
     status: "Night Club",
-    image: "/clubs/senate.webp",
+    image: "/clubs/senate.jpg.WEBP",
     map: "https://www.openstreetmap.org/?mlat=41.6109&mlon=41.6373#map=18/41.6109/41.6373",
   },
 
@@ -52,7 +52,7 @@ const clubs = [
     age: "18+",
     music: "DJ · Live Shows",
     status: "Night Club",
-    image: "/clubs/teatro.jpg",
+    image: "/clubs/%20%20%20%20teatro.jpg.JPG",
     map: "https://www.openstreetmap.org/?mlat=41.6258&mlon=41.6289#map=18/41.6258/41.6289",
   },
 ];
