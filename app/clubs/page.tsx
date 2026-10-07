@@ -18,10 +18,10 @@ const clubs = [
     description:
       "Один из самых атмосферных rooftop-клубов Батуми с панорамным видом на город и море.",
     address: "Sherif Khimshiashvili 15B · 34 этаж",
-    hours: "Сезонный",
+    hours: "Ночные мероприятия",
     age: "24+",
     music: "Electronic · House",
-    status: "Сезонный",
+    status: "Работает вне сезона",
     map: "https://www.openstreetmap.org/?mlat=41.61049&mlon=41.63724#map=18/41.61049/41.63724",
   },
   {
