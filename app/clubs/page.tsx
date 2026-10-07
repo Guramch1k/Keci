@@ -16,25 +16,29 @@ const clubs = [
     name: "ROOFTOP34",
     subtitle: "Rooftop · Electronic",
     description:
-      "Один из самых атмосферных rooftop-клубов Батуми с панорамным видом на город и море.",
+      "Rooftop-клуб на 34 этаже Panorama с панорамным видом на Батуми и море. Электронная музыка, DJ-сеты и ночные мероприятия.",
     address: "Sherif Khimshiashvili 15B · 34 этаж",
-    hours: "00:00 – 06:00",
+    hours: "Вечерние мероприятия",
     age: "24+",
-    music: "Electronic · House",
+    music: "House · Electronic",
     status: "Работает вне сезона",
+    image:
+      "https://www.restaurants10.com/GE/Batumi/107255218671124/Panorama-Restaurant-Batumi",
     map: "https://www.openstreetmap.org/?mlat=41.61049&mlon=41.63724#map=18/41.61049/41.63724",
   },
   {
     id: "senate",
     name: "SENATE",
-    subtitle: "Night Club · Open Format",
+    subtitle: "Night Club · Batumi",
     description:
-      "Ночной клуб в центре Батуми с DJ, танцполом, коктейлями и атмосферой до самого утра.",
-    address: "Sherif Khimshiashvili 14 · 3 этаж",
+      "Премиальный ночной клуб Батуми с DJ, танцполом, VIP-зонами и атмосферой до самого утра.",
+    address: "Sherif Khimshiashvili 14",
     hours: "22:00 – 06:00",
     age: "24+",
-    music: "Open Format",
-    status: "Открыт ежедневно",
+    music: "Open Format · DJ",
+    status: "Night Club",
+    image:
+      "https://batumi.media/derived/batumi-one/batumi_one_main/2026/06/81f81ded-ece5-4a7a-8dca-5ae9b15daad1/og_webp.webp",
     map: "https://www.openstreetmap.org/?mlat=41.6109&mlon=41.6373#map=18/41.6109/41.6373",
   },
   {
@@ -42,12 +46,14 @@ const clubs = [
     name: "TEATRO",
     subtitle: "Lounge · Night Club",
     description:
-      "Большой night club с DJ, живыми выступлениями, коктейлями и VIP-зонами.",
+      "Большой night club с живыми выступлениями, шоу-программами, DJ и VIP-зонами.",
     address: "Lech & Maria Kaczynski 5B",
     hours: "00:00 – 06:00",
     age: "18+",
     music: "DJ · Live Shows",
-    status: "Ночной клуб",
+    status: "Night Club",
+    image:
+      "https://teatro.ge/_next/image/?q=75&url=%2F_next%2Fstatic%2Fmedia%2Fdj-crypto.f6d3495c.jpg&w=3840",
     map: "https://www.openstreetmap.org/?mlat=41.6258&mlon=41.6289#map=18/41.6258/41.6289",
   },
 ];
@@ -84,6 +90,7 @@ export default function ClubsPage() {
 
       </header>
 
+
       {/* HERO */}
 
       <section className="clubsHero">
@@ -109,13 +116,15 @@ export default function ClubsPage() {
 
       </section>
 
-      {/* CONTENT */}
+
+      {/* CLUBS */}
 
       <section className="clubsContent">
 
         <div className="clubsSectionHead">
 
           <div>
+
             <span className="clubsEyebrow dark">
               ВНЕ СЕЗОНА
             </span>
@@ -124,6 +133,7 @@ export default function ClubsPage() {
               Клубы
               <small>{clubs.length}</small>
             </h2>
+
           </div>
 
           <div className="clubsMusicLabel">
@@ -133,7 +143,6 @@ export default function ClubsPage() {
 
         </div>
 
-        {/* CLUB LIST */}
 
         <div className="clubsGrid">
 
@@ -144,16 +153,19 @@ export default function ClubsPage() {
               key={club.id}
             >
 
-              {/* VISUAL */}
+              {/* PHOTO */}
 
-              <div className="clubVisual">
+              <div
+                className="clubVisual"
+                style={{
+                  backgroundImage: `url("${club.image}")`,
+                }}
+              >
+
+                <div className="clubVisualOverlay" />
 
                 <div className="clubVisualNumber">
                   0{index + 1}
-                </div>
-
-                <div className="clubVisualIcon">
-                  <Music2 />
                 </div>
 
                 <button
@@ -177,6 +189,7 @@ export default function ClubsPage() {
 
               </div>
 
+
               {/* INFO */}
 
               <div className="clubInfo">
@@ -197,9 +210,11 @@ export default function ClubsPage() {
 
                 </div>
 
+
                 <p className="clubDescription">
                   {club.description}
                 </p>
+
 
                 <div className="clubDetails">
 
@@ -225,6 +240,7 @@ export default function ClubsPage() {
                   </div>
 
                 </div>
+
 
                 <div className="clubActions">
 
@@ -263,6 +279,7 @@ export default function ClubsPage() {
         </div>
 
       </section>
+
 
       {/* FOOTER */}
 
