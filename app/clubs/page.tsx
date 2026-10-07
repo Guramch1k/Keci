@@ -23,7 +23,7 @@ const clubs = [
     music: "House · Electronic",
     status: "Работает вне сезона",
     image:
-      "https://www.restaurants10.com/GE/Batumi/107255218671124/Panorama-Restaurant-Batumi",
+      image: "/clubs/rooftop34.jpg",
     map: "https://www.openstreetmap.org/?mlat=41.61049&mlon=41.63724#map=18/41.61049/41.63724",
   },
   {
@@ -53,7 +53,7 @@ const clubs = [
     music: "DJ · Live Shows",
     status: "Night Club",
     image:
-      "https://teatro.ge/_next/image/?q=75&url=%2F_next%2Fstatic%2Fmedia%2Fdj-crypto.f6d3495c.jpg&w=3840",
+      image: "/clubs/teatro.jpg",
     map: "https://www.openstreetmap.org/?mlat=41.6258&mlon=41.6289#map=18/41.6258/41.6289",
   },
 ];
