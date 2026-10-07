@@ -22,7 +22,7 @@ const clubs = [
     age: "24+",
     music: "House · Electronic",
     status: "Работает вне сезона",
-    image: "/clubs/rooftop34.jpg",
+    image: "/clubs/rooftop34.webp",
     map: "https://www.openstreetmap.org/?mlat=41.61049&mlon=41.63724#map=18/41.61049/41.63724",
   },
 
@@ -37,7 +37,7 @@ const clubs = [
     age: "24+",
     music: "Open Format · DJ",
     status: "Night Club",
-    image: "/clubs/senate.jpg",
+    image: "/clubs/senate.webp",
     map: "https://www.openstreetmap.org/?mlat=41.6109&mlon=41.6373#map=18/41.6109/41.6373",
   },
 
