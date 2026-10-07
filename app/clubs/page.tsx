@@ -22,7 +22,6 @@ const clubs = [
     age: "24+",
     music: "House · Electronic",
     status: "Работает вне сезона",
-    image:
       image: "/clubs/rooftop34.jpg",
     map: "https://www.openstreetmap.org/?mlat=41.61049&mlon=41.63724#map=18/41.61049/41.63724",
   },
