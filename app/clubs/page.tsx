@@ -22,9 +22,10 @@ const clubs = [
     age: "24+",
     music: "House · Electronic",
     status: "Работает вне сезона",
-      image: "/clubs/rooftop34.jpg",
+    image: "/clubs/rooftop34.jpg",
     map: "https://www.openstreetmap.org/?mlat=41.61049&mlon=41.63724#map=18/41.61049/41.63724",
   },
+
   {
     id: "senate",
     name: "SENATE",
@@ -36,10 +37,10 @@ const clubs = [
     age: "24+",
     music: "Open Format · DJ",
     status: "Night Club",
-    image:
-      "https://batumi.media/derived/batumi-one/batumi_one_main/2026/06/81f81ded-ece5-4a7a-8dca-5ae9b15daad1/og_webp.webp",
+    image: "/clubs/senate.jpg",
     map: "https://www.openstreetmap.org/?mlat=41.6109&mlon=41.6373#map=18/41.6109/41.6373",
   },
+
   {
     id: "teatro",
     name: "TEATRO",
@@ -51,8 +52,7 @@ const clubs = [
     age: "18+",
     music: "DJ · Live Shows",
     status: "Night Club",
-    image:
-      image: "/clubs/teatro.jpg",
+    image: "/clubs/teatro.jpg",
     map: "https://www.openstreetmap.org/?mlat=41.6258&mlon=41.6289#map=18/41.6258/41.6289",
   },
 ];
