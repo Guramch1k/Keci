@@ -143,14 +143,11 @@ export default function Home() {
           </button>
 
           <button
-  className="mobileNavItem"
-  onClick={() => {
-    closeMobilePanels();
-    router.push("/clubs");
-  }}
+  className="navItem"
+  onClick={() => router.push("/clubs")}
 >
   <Music2 />
-  <span>Клубы</span>
+  Клубы
 </button>
 
           <button
@@ -201,15 +198,15 @@ export default function Home() {
           </button>
 
           <button
-            className="mobileNavItem"
-            onClick={() => {
-              setActive("Клубы");
-              closeMobilePanels();
-            }}
-          >
-            <Music2 />
-            <span>Клубы</span>
-          </button>
+  className="mobileNavItem"
+  onClick={() => {
+    closeMobilePanels();
+    router.push("/clubs");
+  }}
+>
+  <Music2 />
+  <span>Клубы</span>
+</button>
 
           <button
             className="mobileNavItem"
