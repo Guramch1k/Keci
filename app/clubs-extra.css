@@ -1,0 +1,470 @@
+
+
+/* =========================================================
+   CLUBS — фильтры, ссылки, избранное, страница клуба
+   ========================================================= */
+
+.clubsBack {
+  text-decoration: none;
+}
+
+.clubVisualImage {
+  object-fit: cover;
+  z-index: 0;
+}
+
+.clubFavorite.active {
+  background: #c4e45d;
+  border-color: #c4e45d;
+  color: #111;
+}
+
+.clubFavorite.active svg {
+  fill: currentColor;
+}
+
+.clubTitleLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.clubTitleLink:hover {
+  color: #5f7a14;
+}
+
+.clubInlineLink {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid #d5d9c8;
+}
+
+.clubInlineLink:hover {
+  color: #5f7a14;
+  border-bottom-color: #c4e45d;
+}
+
+/* ссылки в карточке выглядят как кнопки */
+.clubActions a {
+  min-height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  border: 1px solid #dfe1d9;
+  border-radius: 2px;
+
+  background: #fff;
+  color: #222;
+
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.clubActions a:hover {
+  border-color: #c4e45d;
+  background: #c4e45d;
+  color: #111;
+}
+
+.clubActions a svg {
+  width: 15px;
+  height: 15px;
+}
+
+.clubActions a.clubDetailsButton {
+  background: #101210;
+  border-color: #101210;
+  color: #fff;
+}
+
+.clubActions a.clubDetailsButton:hover {
+  background: #c4e45d;
+  border-color: #c4e45d;
+  color: #111;
+}
+
+/* фильтры */
+
+.clubsFilters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+
+  margin: -8px 0 30px;
+}
+
+.clubsFilterChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  min-height: 36px;
+  padding: 0 14px;
+
+  border: 1px solid #dfe1d9;
+  border-radius: 999px;
+
+  background: #fff;
+  color: #3a3d37;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.clubsFilterChip svg {
+  width: 14px;
+  height: 14px;
+}
+
+.clubsFilterChip:hover {
+  border-color: #c4e45d;
+}
+
+.clubsFilterChip.selected {
+  background: #101210;
+  border-color: #101210;
+  color: #fff;
+}
+
+.clubsFilterDivider {
+  width: 1px;
+  height: 22px;
+  margin: 0 6px;
+
+  background: #dfe1d9;
+}
+
+.clubsEmpty {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  padding: 50px 20px;
+
+  text-align: center;
+  color: #777b74;
+  font-size: 13px;
+}
+
+.clubsEmpty strong {
+  color: #171714;
+  font-size: 17px;
+}
+
+/* страница клуба */
+
+.clubPageHero {
+  position: relative;
+  min-height: 460px;
+
+  display: flex;
+  align-items: flex-end;
+
+  overflow: hidden;
+  background: #080909;
+}
+
+.clubPageHeroImage {
+  object-fit: cover;
+}
+
+.clubPageHeroShade {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(0, 0, 0, 0.15) 40%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+}
+
+.clubPageHeroContent {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+
+  padding: 0 42px 48px;
+  color: #fff;
+}
+
+.clubPageHeroContent h1 {
+  margin: 14px 0 18px;
+
+  font-size: 76px;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.clubPageBadges {
+  display: flex;
+  gap: 8px;
+}
+
+.clubPageBadges span {
+  padding: 6px 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+
+  background: rgba(0, 0, 0, 0.3);
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.clubPageBody {
+  max-width: 1250px;
+  margin: 0 auto;
+
+  padding: 56px 42px 90px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 48px;
+}
+
+.clubPageDescription {
+  margin: 0 0 30px;
+
+  color: #3a3d37;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.clubPageActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.clubPageRoute,
+.clubPageSecondary,
+.clubPageFavorite {
+  min-height: 46px;
+  padding: 0 20px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid #dfe1d9;
+  border-radius: 2px;
+
+  background: #fff;
+  color: #222;
+
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.clubPageRoute {
+  background: #101210;
+  border-color: #101210;
+  color: #fff;
+}
+
+.clubPageRoute:hover,
+.clubPageSecondary:hover,
+.clubPageFavorite:hover,
+.clubPageFavorite.active {
+  background: #c4e45d;
+  border-color: #c4e45d;
+  color: #111;
+}
+
+.clubPageRoute svg,
+.clubPageFavorite svg {
+  width: 16px;
+  height: 16px;
+}
+
+.clubPageFavorite.active svg {
+  fill: currentColor;
+}
+
+.clubPageInfo {
+  align-self: start;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 26px 24px;
+
+  background: #fff;
+  border: 1px solid #e7e8e2;
+  border-radius: 3px;
+}
+
+.clubPageRow {
+  display: flex;
+  gap: 12px;
+}
+
+.clubPageRow > svg {
+  flex: 0 0 auto;
+
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+
+  color: #a6bd4c;
+}
+
+.clubPageRow small {
+  display: block;
+  margin-bottom: 3px;
+
+  color: #858980;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.clubPageRow span,
+.clubPageRow a {
+  color: #171714;
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.clubPageRow a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.clubPageRow a:hover {
+  color: #5f7a14;
+}
+
+.clubPageRow a svg {
+  width: 13px;
+  height: 13px;
+}
+
+@media (max-width: 900px) {
+  .clubsFilters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0 20px 4px;
+
+    scrollbar-width: none;
+  }
+
+  .clubsFilters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .clubsFilterChip {
+    flex: 0 0 auto;
+  }
+
+  .clubPageHero {
+    min-height: 360px;
+  }
+
+  .clubPageHeroContent {
+    padding: 0 20px 34px;
+  }
+
+  .clubPageHeroContent h1 {
+    font-size: 48px;
+  }
+
+  .clubPageBody {
+    grid-template-columns: 1fr;
+    gap: 30px;
+
+    padding: 34px 20px 64px;
+  }
+
+  .clubPageDescription {
+    font-size: 16px;
+  }
+
+  .clubPageActions > * {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}
+
+/* маркер клуба на карте */
+
+.keci-real-marker-inner.club::before {
+  background: #1b1428;
+  border-color: #b48cff;
+}
+
+.keci-real-marker-inner.club span {
+  background: #b48cff;
+}
+
+
+/* =========================================================
+   ЛОГОТИП keci. — одинаковый на всех страницах, как на главной:
+   салатовое «keci», белая точка
+   ========================================================= */
+
+.clubsLogo,
+.fullMapLogo {
+  font-size: 31px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: #c4e45d;
+  text-decoration: none;
+}
+
+.clubsLogo span,
+.fullMapLogo span {
+  color: #ffffff;
+}
+
+.clubsFooter .logo {
+  font-size: 31px;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+@media (max-width: 900px) {
+  .clubsLogo,
+  .fullMapLogo {
+    font-size: 31px;
+  }
+
+  .clubsFooter .logo {
+    font-size: 31px;
+  }
+}

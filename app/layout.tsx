@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./clubs-extra.css";
 
 export const metadata: Metadata = {
   title: "keci — Discover Batumi",

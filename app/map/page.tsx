@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import {
   ArrowLeft,
   Search,
@@ -12,6 +13,36 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import type { Place } from "./RealBatumiMap";
+import { clubs, instagramUrl } from "../clubsData";
+
+type Category = "all" | "restaurant" | "club";
+
+const categoryLabels: Record<Category, string> = {
+  all: "Все места",
+  restaurant: "Рестораны",
+  club: "Клубы",
+};
+
+const nextCategory: Record<Category, Category> = {
+  all: "restaurant",
+  restaurant: "club",
+  club: "all",
+};
+
+// Клубы берём из нашего файла данных (app/data/clubs.ts)
+const clubPlaces: Place[] = clubs.map((club) => ({
+  id: "club-" + club.id,
+  name: club.name,
+  lat: club.lat,
+  lng: club.lng,
+  cuisine: "Клуб · " + club.music,
+  address: club.address,
+  phone: club.phone ?? "",
+  website: club.website ?? (club.instagram ? instagramUrl(club.instagram) : ""),
+  openingHours: club.hours ?? "",
+  category: "club",
+  href: "/clubs/" + club.id,
+}));
 
 const RealBatumiMap = dynamic(
   () => import("./RealBatumiMap"),
@@ -23,7 +54,8 @@ const RealBatumiMap = dynamic(
 export default function MapPage() {
   const router = useRouter();
 
-  const [places, setPlaces] = useState<Place[]>([]);
+  const [restaurants, setRestaurants] = useState<Place[]>([]);
+  const [category, setCategory] = useState<Category>("all");
   const [selected, setSelected] = useState<string | null>(
     null
   );
@@ -53,9 +85,21 @@ export default function MapPage() {
         const data = await response.json();
 
         if (!cancelled) {
-          setPlaces(data);
+          setRestaurants(
+            (data as Place[]).map((item) => ({
+              ...item,
+              category: "restaurant" as const,
+            }))
+          );
 
-          if (data.length > 0) {
+          // /map?place=club-senate — открыть карту сразу на нужном месте
+          const requested = new URLSearchParams(
+            window.location.search
+          ).get("place");
+
+          if (requested) {
+            setSelected(requested);
+          } else if (data.length > 0) {
             setSelected(data[0].id);
           }
         }
@@ -80,6 +124,23 @@ export default function MapPage() {
       cancelled = true;
     };
   }, []);
+
+  // Клубы показываем сразу, не дожидаясь загрузки ресторанов
+  useEffect(() => {
+    const requested = new URLSearchParams(
+      window.location.search
+    ).get("place");
+
+    if (requested && requested.startsWith("club-")) {
+      setSelected(requested);
+    }
+  }, []);
+
+  const places = useMemo(() => {
+    if (category === "restaurant") return restaurants;
+    if (category === "club") return clubPlaces;
+    return [...clubPlaces, ...restaurants];
+  }, [category, restaurants]);
 
   const filteredPlaces = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -113,9 +174,9 @@ export default function MapPage() {
           <span>Назад</span>
         </button>
 
-        <div className="fullMapLogo">
+        <Link href="/" className="fullMapLogo" aria-label="keci — на главную">
           keci<span>.</span>
-        </div>
+        </Link>
 
         <div className="fullMapTitle">
           Карта Батуми
@@ -132,8 +193,8 @@ export default function MapPage() {
               onChange={(event) =>
                 setQuery(event.target.value)
               }
-              placeholder="Поиск ресторана..."
-              aria-label="Поиск ресторана"
+              placeholder="Поиск места..."
+              aria-label="Поиск места"
             />
 
             {query && (
@@ -149,10 +210,14 @@ export default function MapPage() {
 
           {/* FILTER */}
 
-          <button className="fullMapFilter">
+          <button
+            className="fullMapFilter"
+            onClick={() => setCategory(nextCategory[category])}
+            aria-label="Сменить категорию"
+          >
             <SlidersHorizontal />
 
-            <span>Рестораны</span>
+            <span>{categoryLabels[category]}</span>
           </button>
         </div>
       </header>
@@ -165,11 +230,11 @@ export default function MapPage() {
         <aside className="mapSidebar">
           <div className="mapSidebarTop">
             <span>
-              РЕАЛЬНЫЕ МЕСТА В БАТУМИ
+              МЕСТА В БАТУМИ
             </span>
 
             <h1>
-              Рестораны
+              {categoryLabels[category]}
 
               <small>
                 {filteredPlaces.length}
