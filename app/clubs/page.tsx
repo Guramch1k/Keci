@@ -18,7 +18,7 @@ const clubs = [
     description:
       "Rooftop-клуб на 34 этаже Panorama с панорамным видом на Батуми и море. Электронная музыка, DJ-сеты и ночные мероприятия.",
     address: "Sherif Khimshiashvili 15B · 34 этаж",
-    hours: "Вечерние мероприятия",
+    hours: "00:00 – 06:00",
     age: "24+",
     music: "House · Electronic",
     status: "Работает вне сезона",
