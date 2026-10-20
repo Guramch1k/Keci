@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
+import { useMemo, useState } from "react";
 import {
   ArrowLeft,
   Heart,
@@ -7,98 +10,65 @@ import {
   Clock,
   Music2,
   ExternalLink,
+  Instagram,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
 
-const clubs = [
-  {
-    id: "rooftop34",
-    name: "ROOFTOP34",
-    subtitle: "Rooftop · Electronic",
-    description:
-      "Rooftop-клуб на 34 этаже Panorama с панорамным видом на Батуми и море. Электронная музыка, DJ-сеты и ночные мероприятия.",
-    address: "Sherif Khimshiashvili 15B · 34 этаж",
-    hours: "00:00 – 06:00",
-    age: "24+",
-    music: "House · Electronic",
-    status: "Работает вне сезона",
-    image: "/clubs/%20%20%20%20rooftop34.jpg.WEBP",
-    map: "https://www.openstreetmap.org/?mlat=41.61049&mlon=41.63724#map=18/41.61049/41.63724",
-  },
-
-  {
-    id: "senate",
-    name: "SENATE",
-    subtitle: "Night Club · Batumi",
-    description:
-      "Премиальный ночной клуб Батуми с DJ, танцполом, VIP-зонами и атмосферой до самого утра.",
-    address: "Sherif Khimshiashvili 14",
-    hours: "22:00 – 06:00",
-    age: "24+",
-    music: "Open Format · DJ",
-    status: "Night Club",
-    image: "/clubs/senate.jpg.WEBP",
-    map: "https://www.openstreetmap.org/?mlat=41.6109&mlon=41.6373#map=18/41.6109/41.6373",
-  },
-
-  {
-    id: "teatro",
-    name: "TEATRO",
-    subtitle: "Lounge · Night Club",
-    description:
-      "Большой night club с живыми выступлениями, шоу-программами, DJ и VIP-зонами.",
-    address: "Lech & Maria Kaczynski 5B",
-    hours: "00:00 – 06:00",
-    age: "18+",
-    music: "DJ · Live Shows",
-    status: "Night Club",
-    image: "/clubs/%20%20%20%20teatro.jpg.JPG",
-    map: "https://www.openstreetmap.org/?mlat=41.6258&mlon=41.6289#map=18/41.6258/41.6289",
-  },
-];
+import {
+  allGenres,
+  clubMapHref,
+  clubs,
+  instagramUrl,
+} from "../clubsData";
+import { useFavorites } from "../useFavorites";
 
 export default function ClubsPage() {
-  const router = useRouter();
+  const favorites = useFavorites();
+
+  const [genre, setGenre] = useState<string>("Все");
+  const [onlyEighteen, setOnlyEighteen] = useState(false);
+  const [onlyFavorites, setOnlyFavorites] = useState(false);
+
+  const genres = useMemo(() => ["Все", ...allGenres()], []);
+
+  const visible = useMemo(
+    () =>
+      clubs.filter((club) => {
+        if (genre !== "Все" && !club.genres.includes(genre)) return false;
+        if (onlyEighteen && club.age > 18) return false;
+        if (onlyFavorites && !favorites.has(club.id)) return false;
+        return true;
+      }),
+    // favorites.ids меняется при добавлении/удалении
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [genre, onlyEighteen, onlyFavorites, favorites.ids]
+  );
 
   return (
     <main className="clubsPage">
-
       {/* HEADER */}
 
       <header className="clubsHeader">
-
-        <button
-          className="clubsBack"
-          onClick={() => router.push("/")}
-        >
+        <Link href="/" className="clubsBack">
           <ArrowLeft />
           <span>Назад</span>
-        </button>
+        </Link>
 
-        <div className="clubsLogo">
+        <Link href="/" className="clubsLogo" aria-label="keci — на главную">
           keci<span>.</span>
-        </div>
+        </Link>
 
-        <div className="clubsHeaderTitle">
-          Клубы
-        </div>
+        <div className="clubsHeaderTitle">Клубы</div>
 
         <div className="clubsHeaderRight">
           <span>Батуми</span>
         </div>
-
       </header>
-
 
       {/* HERO */}
 
       <section className="clubsHero">
-
         <div className="clubsHeroContent">
-
-          <span className="clubsEyebrow">
-            NIGHTLIFE · BATUMI
-          </span>
+          <span className="clubsEyebrow">NIGHTLIFE · BATUMI</span>
 
           <h1>
             Ночная жизнь
@@ -106,198 +76,210 @@ export default function ClubsPage() {
             <em>Батуми.</em>
           </h1>
 
-          <p>
-            Клубы, музыка и вечеринки,
-            которые стоит знать.
-          </p>
-
+          <p>Клубы, музыка и вечеринки, которые стоит знать.</p>
         </div>
-
       </section>
-
 
       {/* CLUBS */}
 
       <section className="clubsContent">
-
         <div className="clubsSectionHead">
-
           <div>
-
-            <span className="clubsEyebrow dark">
-              ВНЕ СЕЗОНА
-            </span>
+            <span className="clubsEyebrow dark">НОЧНАЯ ЖИЗНЬ</span>
 
             <h2>
               Клубы
-              <small>{clubs.length}</small>
+              <small>{visible.length}</small>
             </h2>
-
           </div>
 
           <div className="clubsMusicLabel">
             <Music2 />
             <span>Nightlife</span>
           </div>
-
         </div>
 
+        {/* FILTERS */}
+
+        <div className="clubsFilters">
+          {genres.map((item) => (
+            <button
+              key={item}
+              className={
+                genre === item
+                  ? "clubsFilterChip selected"
+                  : "clubsFilterChip"
+              }
+              onClick={() => setGenre(item)}
+            >
+              {item}
+            </button>
+          ))}
+
+          <span className="clubsFilterDivider" />
+
+          <button
+            className={
+              onlyEighteen
+                ? "clubsFilterChip selected"
+                : "clubsFilterChip"
+            }
+            onClick={() => setOnlyEighteen(!onlyEighteen)}
+          >
+            Вход с 18 лет
+          </button>
+
+          <button
+            className={
+              onlyFavorites
+                ? "clubsFilterChip selected"
+                : "clubsFilterChip"
+            }
+            onClick={() => setOnlyFavorites(!onlyFavorites)}
+          >
+            <Heart />
+            Избранное
+          </button>
+        </div>
+
+        {visible.length === 0 && (
+          <div className="clubsEmpty">
+            <strong>Ничего не найдено</strong>
+            <span>
+              {onlyFavorites && favorites.ids.length === 0
+                ? "Нажмите на сердечко у клуба, чтобы добавить его в избранное."
+                : "Попробуйте снять часть фильтров."}
+            </span>
+          </div>
+        )}
 
         <div className="clubsGrid">
-
-          {clubs.map((club, index) => (
-
-            <article
-              className="clubCard"
-              key={club.id}
-            >
-
+          {visible.map((club, index) => (
+            <article className="clubCard" key={club.id}>
               {/* PHOTO */}
 
-              <div
-                className="clubVisual"
-                style={{
-                  backgroundImage: `url("${club.image}")`,
-                }}
-              >
+              <div className="clubVisual">
+                <Image
+                  src={club.image}
+                  alt={club.name}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 400px"
+                  className="clubVisualImage"
+                />
 
                 <div className="clubVisualOverlay" />
 
                 <div className="clubVisualNumber">
-                  0{index + 1}
+                  {String(index + 1).padStart(2, "0")}
                 </div>
 
                 <button
-                  className="clubFavorite"
-                  aria-label="Добавить в избранное"
+                  className={
+                    favorites.has(club.id)
+                      ? "clubFavorite active"
+                      : "clubFavorite"
+                  }
+                  aria-label={
+                    favorites.has(club.id)
+                      ? "Убрать из избранного"
+                      : "Добавить в избранное"
+                  }
+                  aria-pressed={favorites.has(club.id)}
+                  onClick={() => favorites.toggle(club.id)}
                 >
                   <Heart />
                 </button>
 
                 <div className="clubVisualBottom">
-
-                  <span>
-                    {club.status}
-                  </span>
-
-                  <span>
-                    {club.age}
-                  </span>
-
+                  <span>{club.status ?? "Night Club"}</span>
+                  <span>{club.age}+</span>
                 </div>
-
               </div>
-
 
               {/* INFO */}
 
               <div className="clubInfo">
-
                 <div className="clubTitleRow">
-
                   <div>
-
                     <h3>
-                      {club.name}
+                      <Link
+                        href={"/clubs/" + club.id}
+                        className="clubTitleLink"
+                      >
+                        {club.name}
+                      </Link>
                     </h3>
 
-                    <span>
-                      {club.subtitle}
-                    </span>
-
+                    <span>{club.subtitle}</span>
                   </div>
-
                 </div>
 
-
-                <p className="clubDescription">
-                  {club.description}
-                </p>
-
+                <p className="clubDescription">{club.description}</p>
 
                 <div className="clubDetails">
-
                   <div>
                     <MapPin />
-                    <span>
-                      {club.address}
-                    </span>
+                    <span>{club.address}</span>
                   </div>
 
                   <div>
                     <Clock />
                     <span>
-                      {club.hours}
+                      {club.hours ?? "Часы работы — в Instagram клуба"}
                     </span>
                   </div>
 
                   <div>
                     <Music2 />
-                    <span>
-                      {club.music}
-                    </span>
+                    <span>{club.music}</span>
                   </div>
 
+                  {club.instagram && (
+                    <div>
+                      <Instagram />
+                      <a
+                        href={instagramUrl(club.instagram)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="clubInlineLink"
+                      >
+                        @{club.instagram}
+                      </a>
+                    </div>
+                  )}
                 </div>
 
-
                 <div className="clubActions">
-
-                  <button
-                    onClick={() =>
-                      window.open(
-                        club.map,
-                        "_blank"
-                      )
-                    }
-                  >
+                  <Link href={clubMapHref(club)}>
                     <MapPin />
                     На карте
-                  </button>
+                  </Link>
 
-                  <button
+                  <Link
+                    href={"/clubs/" + club.id}
                     className="clubDetailsButton"
-                    onClick={() =>
-                      alert(
-                        `Страница ${club.name} будет добавлена следующим этапом.`
-                      )
-                    }
                   >
                     Подробнее
                     <ExternalLink />
-                  </button>
-
+                  </Link>
                 </div>
-
               </div>
-
             </article>
-
           ))}
-
         </div>
-
       </section>
-
 
       {/* FOOTER */}
 
       <footer className="clubsFooter">
-
         <div className="logo">
           keci<span>.</span>
         </div>
 
-        <span>
-          Discover Batumi
-        </span>
+        <span>Discover Batumi</span>
 
-        <span>
-          © 2026 keci
-        </span>
-
+        <span>© 2026 keci</span>
       </footer>
-
     </main>
   );
 }
