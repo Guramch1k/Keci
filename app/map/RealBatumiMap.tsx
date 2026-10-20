@@ -24,6 +24,9 @@ export type Place = {
   phone: string;
   website: string;
   openingHours: string;
+  category?: "restaurant" | "club";
+  /** Внутренняя страница заведения на нашем сайте (если есть) */
+  href?: string;
 };
 
 type Props = {
@@ -62,12 +65,12 @@ function MapController({
   return null;
 }
 
-function createKeciIcon() {
+function createKeciIcon(category: "restaurant" | "club") {
   return new L.DivIcon({
     className: "keci-real-marker",
 
     html: `
-      <div class="keci-real-marker-inner">
+      <div class="keci-real-marker-inner ${category}">
         <span></span>
       </div>
     `,
@@ -83,8 +86,11 @@ export default function RealBatumiMap({
   selected,
   onSelect,
 }: Props) {
-  const icon = useMemo(
-    () => createKeciIcon(),
+  const icons = useMemo(
+    () => ({
+      restaurant: createKeciIcon("restaurant"),
+      club: createKeciIcon("club"),
+    }),
     []
   );
 
@@ -117,7 +123,7 @@ export default function RealBatumiMap({
             place.lat,
             place.lng,
           ]}
-          icon={icon}
+          icon={icons[place.category ?? "restaurant"]}
           eventHandlers={{
             click: () =>
               onSelect(place.id),
@@ -146,6 +152,12 @@ export default function RealBatumiMap({
                 <small>
                   {place.openingHours}
                 </small>
+              )}
+
+              {place.href && (
+                <a href={place.href}>
+                  Страница клуба
+                </a>
               )}
 
               <a
