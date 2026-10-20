@@ -51,6 +51,7 @@ export const clubs: Club[] = [
     lat: 41.61049,
     lng: 41.63724,
     instagram: "rooftop34_batumi",
+    phone: "+995 598 42 42 42",
   },
   {
     id: "senate",
@@ -68,6 +69,7 @@ export const clubs: Club[] = [
     lat: 41.6109,
     lng: 41.6373,
     instagram: "senate_night_club_batumi",
+    phone: "+995 577 28 78 28",
   },
   {
     id: "teatro",
@@ -85,6 +87,7 @@ export const clubs: Club[] = [
     lat: 41.6258,
     lng: 41.6289,
     instagram: "teatro.club.batumi",
+    phone: "+995 598 25 44 44",
   },
 ];
 
@@ -107,3 +110,4 @@ export function allGenres(): string[] {
   clubs.forEach((club) => club.genres.forEach((g) => set.add(g)));
   return Array.from(set).sort();
 }
+
