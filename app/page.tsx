@@ -44,7 +44,7 @@ const categories = [
 ] as const;
 
 // Рестораны берём из файла app/restaurantsData.ts
-const places = restaurants.map((r) => ({
+const places = restaurants.filter((r) => r.featured).map((r) => ({
   id: r.id,
   name: r.name,
   image: r.image,
@@ -111,7 +111,7 @@ export default function Home() {
         <nav className="nav desktopNav">
           <button
             className="navItem active"
-            onClick={() => setActive("Рестораны")}
+            onClick={() => router.push("/restaurants")}
           >
             <UtensilsCrossed />
             Рестораны
@@ -164,8 +164,8 @@ export default function Home() {
           <button
             className="mobileNavItem"
             onClick={() => {
-              setActive("Рестораны");
               closeMobilePanels();
+              router.push("/restaurants");
             }}
           >
             <UtensilsCrossed />
@@ -516,6 +516,11 @@ export default function Home() {
             ))}
 
           </div>
+
+          <Link href="/restaurants" className="allRestaurantsLink">
+            Все рестораны
+            <ArrowRight />
+          </Link>
         </div>
 
         <div className="mapPanel">
