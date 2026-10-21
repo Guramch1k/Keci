@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -26,6 +27,8 @@ import {
   LogIn,
 } from "lucide-react";
 
+import { restaurants } from "./restaurantsData";
+
 const KeciMap = dynamic(() => import("./KeciMap"), { ssr: false });
 
 const categories = [
@@ -40,44 +43,16 @@ const categories = [
   ["Клубы", "club"],
 ] as const;
 
-const places = [
-  {
-    name: "Medea Restaurant",
-    rating: "4.8",
-    reviews: "1 320",
-    type: "Грузинская · $$",
-    distance: "1.2 км",
-    lat: 41.6502,
-    lng: 41.6367,
-  },
-  {
-    name: "Heart of Batumi",
-    rating: "4.7",
-    reviews: "982",
-    type: "Грузинская · $$",
-    distance: "800 м",
-    lat: 41.6471,
-    lng: 41.6359,
-  },
-  {
-    name: "Umami at Clouds",
-    rating: "4.9",
-    reviews: "1 014",
-    type: "Азиатская · $$$",
-    distance: "1.5 км",
-    lat: 41.6418,
-    lng: 41.6338,
-  },
-  {
-    name: "Black Sea Restaurant",
-    rating: "4.6",
-    reviews: "756",
-    type: "Морепродукты · $$",
-    distance: "1.1 км",
-    lat: 41.6492,
-    lng: 41.6415,
-  },
-];
+// Рестораны берём из файла app/restaurantsData.ts
+const places = restaurants.map((r) => ({
+  id: r.id,
+  name: r.name,
+  image: r.image,
+  type: [r.cuisine, r.price].filter(Boolean).join(" · "),
+  hours: r.hours ?? "",
+  address: r.address ?? "",
+}));
+
 
 function CategoryIcon({ type }: { type: string }) {
   if (type === "bar") return <Martini />;
@@ -94,7 +69,7 @@ export default function Home() {
 
   const [active, setActive] = useState("Все");
   const [query, setQuery] = useState("");
-  const [selected, setSelected] = useState("Medea Restaurant");
+  const [selected, setSelected] = useState(restaurants[0]?.id ?? "");
 
   const [menu, setMenu] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -484,23 +459,22 @@ export default function Home() {
 
             {visible.map((p) => (
 
-              <button
+              <Link
+                href={"/restaurants/" + p.id}
                 className={
-                  selected === p.name
+                  selected === p.id
                     ? "restaurant selected"
                     : "restaurant"
                 }
-                key={p.name}
-                onClick={() =>
-                  setSelected(p.name)
-                }
+                key={p.id}
+                onClick={() => setSelected(p.id)}
               >
 
                 <div className="thumb">
 
                   <Image
-                    src="/batumi.webp"
-                    alt=""
+                    src={p.image}
+                    alt={p.name}
                     fill
                     sizes="102px"
                   />
@@ -517,30 +491,27 @@ export default function Home() {
                     {p.name}
                   </strong>
 
-                  <div className="rating">
+                  {p.type && (
+                    <p>
+                      {p.type}
+                    </p>
+                  )}
 
-                    <Star />
+                  {(p.address || p.hours) && (
+                    <small>
+                      <MapPin />
+                      {p.address || p.hours}
+                    </small>
+                  )}
 
-                    {p.rating}
-
-                    <span>
-                      ({p.reviews})
-                    </span>
-
-                  </div>
-
-                  <p>
-                    {p.type}
-                  </p>
-
-                  <small>
-                    <MapPin />
-                    {p.distance}
-                  </small>
+                  <span className="placeMore">
+                    Подробнее
+                    <ArrowRight />
+                  </span>
 
                 </div>
 
-              </button>
+              </Link>
 
             ))}
 

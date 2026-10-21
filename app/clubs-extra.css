@@ -468,3 +468,40 @@
     font-size: 31px;
   }
 }
+
+.clubPageSecondary svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* карточка ресторана на главной — ссылка на страницу ресторана */
+
+a.restaurant {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.placeMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-top: 8px;
+
+  color: #c4e45d;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.placeMore svg {
+  width: 14px;
+  height: 14px;
+}
+
+.restaurant:hover .placeMore svg {
+  transform: translateX(3px);
+}
+
+.placeMore svg {
+  transition: transform 0.2s ease;
+}

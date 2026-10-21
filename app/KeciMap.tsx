@@ -4,16 +4,12 @@ import Image from "next/image";
 
 type Place = {
   name: string;
-  rating: string;
-  type: string;
-  lat: number;
-  lng: number;
 };
 
 type Props = {
   places: Place[];
   selected: string;
-  onSelect: (name: string) => void;
+  onSelect: (id: string) => void;
 };
 
 export default function KeciMap({}: Props) {
