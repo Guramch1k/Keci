@@ -468,3 +468,109 @@
     font-size: 31px;
   }
 }
+
+.clubPageSecondary svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* карточка ресторана на главной — ссылка на страницу ресторана */
+
+a.restaurant {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.placeMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-top: 8px;
+
+  color: #c4e45d;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.placeMore svg {
+  width: 14px;
+  height: 14px;
+}
+
+.restaurant:hover .placeMore svg {
+  transform: translateX(3px);
+}
+
+.placeMore svg {
+  transition: transform 0.2s ease;
+}
+
+/* раздел «Рестораны» */
+
+.clubCard {
+  position: relative;
+}
+
+a.clubVisual {
+  text-decoration: none;
+  color: inherit;
+}
+
+.restaurantsSearch {
+  flex: 1 1 260px;
+  max-width: 380px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  min-height: 36px;
+  padding: 0 14px;
+
+  border: 1px solid #dfe1d9;
+  border-radius: 999px;
+
+  background: #fff;
+  color: #858980;
+}
+
+.restaurantsSearch svg {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+}
+
+.restaurantsSearch input {
+  flex: 1;
+  min-width: 0;
+
+  border: 0;
+  outline: 0;
+  background: transparent;
+
+  color: #171714;
+  font-size: 13px;
+}
+
+.allRestaurantsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin: 18px 4px 4px;
+
+  color: #c4e45d;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.allRestaurantsLink svg {
+  width: 16px;
+  height: 16px;
+}
+
+.allRestaurantsLink:hover {
+  text-decoration: underline;
+}
